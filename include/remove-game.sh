@@ -1,0 +1,21 @@
+#!/bin/bash
+RemoveOriginSoft(){
+    #对对碰
+    aisleriot 
+    #纸牌王
+    gnome-sudoku 
+    #数独
+    gnome-mines 
+    #扫雷
+    wodim
+    #麻将
+    gnome-mahjongg
+    #音乐播放器
+    rhythmbox 
+    #扫描
+    simple-scan
+    
+    aisleriot
+    cheese
+    transmission-common
+}
