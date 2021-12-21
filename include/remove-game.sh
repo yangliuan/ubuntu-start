@@ -1,21 +1,23 @@
 #!/bin/bash
 RemoveOriginSoft(){
     #对对碰
-    aisleriot 
+    sudo apt purge aisleriot 
     #纸牌王
-    gnome-sudoku 
+    sudo apt purge gnome-sudoku 
     #数独
-    gnome-mines 
+    sudo apt purge gnome-mines 
     #扫雷
-    wodim
+    sudo apt purge wodim
     #麻将
-    gnome-mahjongg
+    sudo apt purge gnome-mahjongg
     #音乐播放器
-    rhythmbox 
+    sudo apt purge rhythmbox 
     #扫描
-    simple-scan
-    
-    aisleriot
-    cheese
-    transmission-common
+    sudo apt purge simple-scan
+    #
+    sudo apt purge aisleriot
+    #
+    sudo apt purge cheese
+    #
+    sudo apt purge transmission-common
 }
