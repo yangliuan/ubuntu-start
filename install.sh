@@ -1,10 +1,17 @@
 #!/bin/bash
-sudo apt update && sudo apt upgrade
+
+export PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin
+clear
+printf "
+#######################################################################
+#                            Ubuntu start                             #
+#######################################################################
+"
 
 start_dir=$(dirname "`readlink -f $0`")
 pushd ${start_dir} > /dev/null
 . ./version.txt
-. ./download.sh
+. ./include/download.sh
 . ./include/remove_unwanted.sh
 . ./include/remove_liboffice.sh
 . ./include/chrome.sh
@@ -12,4 +19,6 @@ pushd ${start_dir} > /dev/null
 . ./include/wps.sh
 . ./include/sougoupinyin.sh
 
-InstallSougoupinyin
+ARG_NUM=$#
+sudo apt update && sudo apt upgrade
+InstallSougoupinyin 2>&1 | tee -a ${start_dir}/install.log
