@@ -43,6 +43,8 @@ sudo apt install curl wget
 
 #InstallSougoupinyinUbuntukylin 2>&1 | tee -a ${start_dir}/install.log
 
-InstallChrome 2>&1 | tee -a ${start_dir}/install.log
+#InstallChrome 2>&1 | tee -a ${start_dir}/install.log
 
-#InstallDeepinWine 2>&1 | tee -a ${start_dir}/install.log
+InstallDeepinWine 2>&1 | tee -a ${start_dir}/install.log
+
+sudo apt autoremove
