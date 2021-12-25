@@ -1,6 +1,6 @@
 #!/bin/bash
 InstallThemeTools(){
-    sudo apt install gnome-tweak-tool
-    sudo apt install chrome-gnome-shell
-    sudo apt install gnome-shell-extensions
+    sudo apt-get install gnome-tweak-tool
+    sudo apt-get install chrome-gnome-shell
+    sudo apt-get install gnome-shell-extensions
 }

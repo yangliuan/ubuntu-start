@@ -11,6 +11,7 @@ printf "
 start_dir=$(dirname "`readlink -f $0`")
 pushd ${start_dir} > /dev/null
 . ./version.txt
+. ./options.conf
 . ./include/download.sh
 . ./include/baidunetdisk.sh
 . ./include/chrome.sh
@@ -34,14 +35,14 @@ pushd ${start_dir} > /dev/null
 
 
 ARG_NUM=$#
-sudo apt update && sudo apt upgrade
-sudo apt install curl wget
+sudo apt-get update && sudo apt-get upgrade
+sudo apt-get install curl wget
 
 RemoveUnwanted 2>&1 | tee -a ${start_dir}/install.log
 
 RemoveLiboffice 2>&1 | tee -a ${start_dir}/install.log
 
-InstallSougoupinyinUbuntukylin 2>&1 | tee -a ${start_dir}/install.log
+InstallBaidunetdisk 2>&1 | tee -a ${start_dir}/install.log
 
 InstallChrome 2>&1 | tee -a ${start_dir}/install.log
 
@@ -65,14 +66,14 @@ InstallQQmusic 2>&1 | tee -a ${start_dir}/install.log
 
 InstallQv2ray 2>&1 | tee -a ${start_dir}/install.log
 
+InstallSougoupinyinUbuntukylin 2>&1 | tee -a ${start_dir}/install.log
+
 InstallSunlogin 2>&1 | tee -a ${start_dir}/install.log
 
 InstallThemeTools 2>&1 | tee -a ${start_dir}/install.log
-
-InstallV2rayL 2>&1 | tee -a ${start_dir}/install.log
 
 InstallVlc 2>&1 | tee -a ${start_dir}/install.log
 
 InstallWps 2>&1 | tee -a ${start_dir}/install.log
 
-sudo apt autoremove
+sudo apt-get autoremove
