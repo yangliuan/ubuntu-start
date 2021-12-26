@@ -200,7 +200,7 @@ while :; do echo
     if [[ ! ${sougoupinyin_ubuntukylin_flag} =~ ^[y,n]$ ]]; then
         echo "${CWARNING}input error! Please only input 'y' or 'n'${CEND}"
     else
-         [ "${sougoupinyin_ubuntukylin_flag}" == 'y' -a -e "/usr/bin/sogouImeService" ] && { echo "${CWARNING}qv2ray already installed! ${CEND}"; unset sougoupinyin_ubuntukylin_flag; }
+         [ "${sougoupinyin_ubuntukylin_flag}" == 'y' -a -e "/usr/bin/sogouImeService" ] && { echo "${CWARNING}sougoupinyin ubuntukylin already installed! ${CEND}"; unset sougoupinyin_ubuntukylin_flag; }
         break;
     fi
 done
@@ -212,7 +212,7 @@ while :; do echo
     if [[ ! ${sunlogin_flag} =~ ^[y,n]$ ]]; then
         echo "${CWARNING}input error! Please only input 'y' or 'n'${CEND}"
     else
-         [ "${sunlogin_flag}" == 'y' -a -e "/usr/bin/sogouImeService" ] && { echo "${CWARNING}qv2ray already installed! ${CEND}"; unset sunlogin_flag; }
+         [ "${sunlogin_flag}" == 'y' -a -e "/usr/bin/sogouImeService" ] && { echo "${CWARNING}sunlogin already installed! ${CEND}"; unset sunlogin_flag; }
         break;
     fi
 done
@@ -236,7 +236,7 @@ while :; do echo
     if [[ ! ${vlc_flag} =~ ^[y,n]$ ]]; then
         echo "${CWARNING}input error! Please only input 'y' or 'n'${CEND}"
     else
-         [ "${vlc_flag}" == 'y' -a -e "/snap/bin/vlc" ] && { echo "${CWARNING}theme tools already installed! ${CEND}"; unset vlc_flag; }
+         [ "${vlc_flag}" == 'y' -a -e "/snap/bin/vlc" ] && { echo "${CWARNING}vlc already installed! ${CEND}"; unset vlc_flag; }
         break;
     fi
 done
