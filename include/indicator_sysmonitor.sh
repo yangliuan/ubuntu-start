@@ -4,5 +4,5 @@ InstallIndicatorSysmonitor(){
     sudo apt-get update
     sudo apt-get install indicator-sysmonitor
     sudo apt-get install -f
-    indicator-sysmonitor
+    nohup indicator-sysmonitor &
 }

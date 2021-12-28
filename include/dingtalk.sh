@@ -2,6 +2,7 @@
 InstallDingtalk(){
     pushd ${start_dir}/src > /dev/null
     echo "Download dingtalk ..."
+    #github https://github.com/nashaofu/dingtalk
     src_url="http://mirror.yangliuan.cn/dingtalk-2.1.13-latest-x86_64.AppImage" && Download_src
     sudo mkdir /opt/dingtalk
     sudo mv -fv dingtalk-2.1.13-latest-x86_64.AppImage /opt/dingtalk/dingtalk.AppImage
