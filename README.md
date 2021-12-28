@@ -10,6 +10,7 @@ ubuntu20.04+ desktop 常用软件安装脚本，减少每次重装系统的工�
 │  ├─ deepin_wine.sh deepin_wine 包含常用windows软件
 │  ├─ dingtalk.sh 钉钉
 │  ├─ feishu.sh 飞书
+│  ├─ flameshot.sh 屏幕截图工具
 │  ├─ indicator_sysmonitor.sh 任务栏系统资源监视器
 │  ├─ lantern.sh lantern
 │  ├─ neteasy_cloud_music.sh 网易云音乐
