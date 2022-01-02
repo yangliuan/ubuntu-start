@@ -1,2 +1,3 @@
 # newest software version
 dingtalk_ver=2.1.13
+xDroid_ver=7.1021

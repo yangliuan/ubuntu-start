@@ -13,25 +13,6 @@ pushd ${start_dir} > /dev/null
 . ./version.txt
 . ./options.conf
 . ./include/download.sh
-. ./include/baidunetdisk.sh
-. ./include/chrome.sh
-. ./include/deepin_wine.sh
-. ./include/dingtalk.sh
-. ./include/feishu.sh
-. ./include/flameshot.sh
-. ./include/indicator_sysmonitor.sh
-. ./include/lantern.sh
-. ./include/neteasy_cloud_music.sh
-. ./include/peek.sh
-. ./include/qqmusic.sh
-. ./include/qv2ray.sh
-. ./include/remove_liboffice.sh
-. ./include/remove_unwanted.sh
-. ./include/sougoupinyin_ubuntukylin.sh
-. ./include/sunlogin.sh
-. ./include/theme_tools.sh
-. ./include/vlc.sh
-. ./include/wps.sh
 
 
 ARG_NUM=$#
@@ -40,7 +21,7 @@ sudo apt-get install curl wget
 
 # check service desktop
 while :; do echo
-    read -e -p "Do you want to remove Unwanted soft? [y/n] default(n): " remove_flag
+    read -e -p "Do you want to remove Unwanted soft? [y/n](n): " remove_flag
     remove_flag=${remove_flag:-n}
     if [[ ! ${remove_flag} =~ ^[y,n]$ ]]; then
         echo "${CWARNING}input error! Please only input 'y' or 'n'${CEND}"
@@ -51,7 +32,7 @@ done
 
 # check Baidunetdisk 
 while :; do echo
-    read -e -p "Do you want to install baidunetdisk? [y/n]: " baidunetdisk_flag
+    read -e -p "Do you want to install baidunetdisk? [y/n](y): " baidunetdisk_flag
     baidunetdisk_flag=${baidunetdisk_flag:-y}
     if [[ ! ${baidunetdisk_flag} =~ ^[y,n]$ ]]; then
         echo "${CWARNING}input error! Please only input 'y' or 'n'${CEND}"
@@ -63,7 +44,7 @@ done
 
 # check chrome 
 while :; do echo
-    read -e -p "Do you want to install chrome? [y/n]: " chrome_flag
+    read -e -p "Do you want to install chrome? [y/n](y): " chrome_flag
     chrome_flag=${chrome_flag:-y}
     if [[ ! ${chrome_flag} =~ ^[y,n]$ ]]; then
         echo "${CWARNING}input error! Please only input 'y' or 'n'${CEND}"
@@ -75,7 +56,7 @@ done
 
 # check deepinwine 
 while :; do echo
-    read -e -p "Do you want to install deepinwine? [y/n]: " deepinwine_flag
+    read -e -p "Do you want to install deepinwine? [y/n](y): " deepinwine_flag
     deepinwine_flag=${deepinwine_flag:-y}
     if [[ ! ${deepinwine_flag} =~ ^[y,n]$ ]]; then
         echo "${CWARNING}input error! Please only input 'y' or 'n'${CEND}"
@@ -87,7 +68,7 @@ done
 
 # check dingtalk
 while :; do echo
-    read -e -p "Do you want to install dingtalk? [y/n]: " dingtalk_flag
+    read -e -p "Do you want to install dingtalk? [y/n](y): " dingtalk_flag
     dingtalk_flag=${dingtalk_flag:-y}
     if [[ ! ${dingtalk_flag} =~ ^[y,n]$ ]]; then
         echo "${CWARNING}input error! Please only input 'y' or 'n'${CEND}"
@@ -99,7 +80,7 @@ done
 
 # check feishu
 while :; do echo
-    read -e -p "Do you want to install feishu? [y/n]: " feishu_flag
+    read -e -p "Do you want to install feishu? [y/n](y): " feishu_flag
     feishu_flag=${feishu_flag:-y}
     if [[ ! ${feishu_flag} =~ ^[y,n]$ ]]; then
         echo "${CWARNING}input error! Please only input 'y' or 'n'${CEND}"
@@ -111,7 +92,7 @@ done
 
 # check flameshot
 while :; do echo
-    read -e -p "Do you want to install flameshot? [y/n]: " flameshot_flag
+    read -e -p "Do you want to install flameshot? [y/n](y): " flameshot_flag
     flameshot_flag=${flameshot_flag:-y}
     if [[ ! ${flameshot_flag} =~ ^[y,n]$ ]]; then
         echo "${CWARNING}input error! Please only input 'y' or 'n'${CEND}"
@@ -123,7 +104,7 @@ done
 
 # check indicator sysmonitor
 while :; do echo
-    read -e -p "Do you want to install indicator sysmonitor? [y/n]: " indicator_sysmonitor_flag
+    read -e -p "Do you want to install indicator sysmonitor? [y/n](y): " indicator_sysmonitor_flag
     indicator_sysmonitor_flag=${indicator_sysmonitor_flag:-y}
     if [[ ! ${indicator_sysmonitor_flag} =~ ^[y,n]$ ]]; then
         echo "${CWARNING}input error! Please only input 'y' or 'n'${CEND}"
@@ -135,7 +116,7 @@ done
 
 # check lantern
 while :; do echo
-    read -e -p "Do you want to install lantern? [y/n]: " lantern_flag
+    read -e -p "Do you want to install lantern? [y/n](y): " lantern_flag
     lantern_flag=${lantern_flag:-y}
     if [[ ! ${lantern_flag} =~ ^[y,n]$ ]]; then
         echo "${CWARNING}input error! Please only input 'y' or 'n'${CEND}"
@@ -147,7 +128,7 @@ done
 
 # check neteasy cloudmusic
 while :; do echo
-    read -e -p "Do you want to install neteasy cloudmusic? [y/n]: " neteasy_cloudmusic_flag
+    read -e -p "Do you want to install neteasy cloudmusic? [y/n](y): " neteasy_cloudmusic_flag
     neteasy_cloudmusic_flag=${neteasy_cloudmusic_flag:-y}
     if [[ ! ${neteasy_cloudmusic_flag} =~ ^[y,n]$ ]]; then
         echo "${CWARNING}input error! Please only input 'y' or 'n'${CEND}"
@@ -159,7 +140,7 @@ done
 
 # check peek
 while :; do echo
-    read -e -p "Do you want to install peek? [y/n]: " peek_flag
+    read -e -p "Do you want to install peek? [y/n](y): " peek_flag
     peek_flag=${peek_flag:-y}
     if [[ ! ${peek_flag} =~ ^[y,n]$ ]]; then
         echo "${CWARNING}input error! Please only input 'y' or 'n'${CEND}"
@@ -171,7 +152,7 @@ done
 
 # check qqmusic
 while :; do echo
-    read -e -p "Do you want to install qqmusic? [y/n]: " qqmusic_flag
+    read -e -p "Do you want to install qqmusic? [y/n](y): " qqmusic_flag
     qqmusic_flag=${qqmusic_flag:-y}
     if [[ ! ${qqmusic_flag} =~ ^[y,n]$ ]]; then
         echo "${CWARNING}input error! Please only input 'y' or 'n'${CEND}"
@@ -183,7 +164,7 @@ done
 
 # check qv2ray
 while :; do echo
-    read -e -p "Do you want to install qv2ray? [y/n]: " qv2ray_flag
+    read -e -p "Do you want to install qv2ray? [y/n](y): " qv2ray_flag
     qv2ray_flag=${qv2ray_flag:-y}
     if [[ ! ${qv2ray_flag} =~ ^[y,n]$ ]]; then
         echo "${CWARNING}input error! Please only input 'y' or 'n'${CEND}"
@@ -195,7 +176,7 @@ done
 
 # check sougoupinyin ubuntukylin
 while :; do echo
-    read -e -p "Do you want to install sougoupinyin ubuntukylin? [y/n]: " sougoupinyin_ubuntukylin_flag
+    read -e -p "Do you want to install sougoupinyin ubuntukylin? [y/n](y): " sougoupinyin_ubuntukylin_flag
     sougoupinyin_ubuntukylin_flag=${sougoupinyin_ubuntukylin_flag:-y}
     if [[ ! ${sougoupinyin_ubuntukylin_flag} =~ ^[y,n]$ ]]; then
         echo "${CWARNING}input error! Please only input 'y' or 'n'${CEND}"
@@ -207,7 +188,7 @@ done
 
 # check sunlogin
 while :; do echo
-    read -e -p "Do you want to install sunlogin? [y/n]: " sunlogin_flag
+    read -e -p "Do you want to install sunlogin? [y/n](y): " sunlogin_flag
     sunlogin_flag=${sunlogin_flag:-y}
     if [[ ! ${sunlogin_flag} =~ ^[y,n]$ ]]; then
         echo "${CWARNING}input error! Please only input 'y' or 'n'${CEND}"
@@ -219,7 +200,7 @@ done
 
 # check theme tools
 while :; do echo
-    read -e -p "Do you want to install theme tools? [y/n]: " theme_tools_flag
+    read -e -p "Do you want to install theme tools? [y/n](y): " theme_tools_flag
     theme_tools_flag=${theme_tools_flag:-n}
     if [[ ! ${theme_tools_flag} =~ ^[y,n]$ ]]; then
         echo "${CWARNING}input error! Please only input 'y' or 'n'${CEND}"
@@ -231,7 +212,7 @@ done
 
 # check vlc
 while :; do echo
-    read -e -p "Do you want to install vlc? [y/n]: " vlc_flag
+    read -e -p "Do you want to install vlc? [y/n](y): " vlc_flag
     vlc_flag=${vlc_flag:-n}
     if [[ ! ${vlc_flag} =~ ^[y,n]$ ]]; then
         echo "${CWARNING}input error! Please only input 'y' or 'n'${CEND}"
@@ -243,7 +224,7 @@ done
 
 # check wps
 while :; do echo
-    read -e -p "Do you want to install wps? [y/n]: " wps_flag
+    read -e -p "Do you want to install wps? [y/n](y): " wps_flag
     wps_flag=${wps_flag:-y}
     if [[ ! ${wps_flag} =~ ^[y,n]$ ]]; then
         echo "${CWARNING}input error! Please only input 'y' or 'n'${CEND}"
@@ -253,78 +234,114 @@ while :; do echo
     fi
 done
 
+# check xDroid
+while :; do echo
+    read -e -p "Do you want to install xDroid? [y/n](y): " xDroid_flag
+    xDroid_flag=${xDroid_flag:-y}
+    if [[ ! ${xDroid_flag} =~ ^[y,n]$ ]]; then
+        echo "${CWARNING}input error! Please only input 'y' or 'n'${CEND}"
+    else
+         [ "${xDroid_flag}" == 'y' -a -e "/opt/xdroid/bin" ] && { echo "${CWARNING}xDroid already installed! ${CEND}"; unset xDroid_flag; }
+        break;
+    fi
+done
+
 
 if [ "${remove_flag}" == 'y' ]; then
+    . include/remove_liboffice.sh
+    . include/remove_unwanted.sh
     RemoveUnwanted 2>&1 | tee -a ${start_dir}/install.log
     RemoveLiboffice 2>&1 | tee -a ${start_dir}/install.log
 fi
 
 if [ "${baidunetdisk_flag}" == 'y' ]; then
+    . include/baidunetdisk.sh
     InstallBaidunetdisk 2>&1 | tee -a ${start_dir}/install.log
 fi
 
 if [ "${chrome_flag}" == 'y' ]; then
+    . include/chrome.sh
     InstallChrome 2>&1 | tee -a ${start_dir}/install.log
 fi
 
 if [ "${deepinwine_flag}" == 'y' ]; then
+    . ./include/deepin_wine.sh
     InstallDeepinWine 2>&1 | tee -a ${start_dir}/install.log
 fi
 
 if [ "${dingtalk_flag}" == 'y' ]; then
+    . include/dingtalk.sh
     InstallDingtalk 2>&1 | tee -a ${start_dir}/install.log
 fi
 
 if [ "${feishu_flag}" == 'y' ]; then
+    . include/feishu.sh
     InstallFeishu 2>&1 | tee -a ${start_dir}/install.log
 fi
 
 if [ "${flameshot_flag}" == 'y' ]; then
+    . include/flameshot.sh
     InstallFlameshot 2>&1 | tee -a ${start_dir}/install.log
 fi
 
 if [ "${indicator_sysmonitor_flag}" == 'y' ]; then
+    . include/indicator_sysmonitor.sh
     InstallIndicatorSysmonitor 2>&1 | tee -a ${start_dir}/install.log
 fi
 
 if [ "${lantern_flag}" == 'y' ]; then
+    . include/lantern.sh
     InstallLantern 2>&1 | tee -a ${start_dir}/install.log
 fi
 
 if [ "${neteasy_cloudmusic_flag}" == 'y' ]; then
+    . include/neteasy_cloud_music.sh
     InstallNeteasyCloudMusic 2>&1 | tee -a ${start_dir}/install.log
 fi
 
 if [ "${peek_flag}" == 'y' ]; then
+    . include/peek.sh
     InstallPeek 2>&1 | tee -a ${start_dir}/install.log
 fi
 
 if [ "${qqmusic_flag}" == 'y' ]; then
+    . include/qqmusic.sh
     InstallQQmusic 2>&1 | tee -a ${start_dir}/install.log
 fi
 
 if [ "${qv2ray_flag}" == 'y' ]; then
+    . include/qv2ray.sh
     InstallQv2ray 2>&1 | tee -a ${start_dir}/install.log
 fi
 
 if [ "${sougoupinyin_ubuntukylin_flag}" == 'y' ]; then
+    . include/sougoupinyin_ubuntukylin.sh
     InstallSougoupinyinUbuntukylin 2>&1 | tee -a ${start_dir}/install.log
 fi
 
 if [ "${sunlogin_flag}" == 'y' ]; then
+    . include/sunlogin.sh
     InstallSunlogin 2>&1 | tee -a ${start_dir}/install.log
 fi
 
 if [ "${theme_tools_flag}" == 'y' ]; then
+    . include/theme_tools.sh
     InstallThemeTools 2>&1 | tee -a ${start_dir}/install.log
 fi
 
 if [ "${vlc_flag}" == 'y' ]; then
+    . include/vlc.sh
     InstallVlc 2>&1 | tee -a ${start_dir}/install.log
 fi
 
 if [ "${wps_flag}" == 'y' ]; then
+    . include/wps.sh
     InstallWps 2>&1 | tee -a ${start_dir}/install.log
+fi
+
+if [ "${xDroid_flag}" == 'y' ]; then
+    . include/xDroid.sh
+    InstallxDroid 2>&1 | tee -a ${start_dir}/install.log
 fi
 
 sudo apt-get autoremove
