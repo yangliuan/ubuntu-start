@@ -10,9 +10,11 @@ printf "
 
 start_dir=$(dirname "`readlink -f $0`")
 pushd ${start_dir} > /dev/null
+. ./include/color.sh
 . ./version.txt
 . ./options.conf
 . ./include/download.sh
+
 
 
 ARG_NUM=$#
@@ -201,7 +203,7 @@ done
 # check theme tools
 while :; do echo
     read -e -p "Do you want to install theme tools? [y/n](y): " theme_tools_flag
-    theme_tools_flag=${theme_tools_flag:-n}
+    theme_tools_flag=${theme_tools_flag:-y}
     if [[ ! ${theme_tools_flag} =~ ^[y,n]$ ]]; then
         echo "${CWARNING}input error! Please only input 'y' or 'n'${CEND}"
     else
@@ -213,7 +215,7 @@ done
 # check vlc
 while :; do echo
     read -e -p "Do you want to install vlc? [y/n](y): " vlc_flag
-    vlc_flag=${vlc_flag:-n}
+    vlc_flag=${vlc_flag:-y}
     if [[ ! ${vlc_flag} =~ ^[y,n]$ ]]; then
         echo "${CWARNING}input error! Please only input 'y' or 'n'${CEND}"
     else
