@@ -85,7 +85,7 @@ while :; do echo
     if [[ ! ${feishu_flag} =~ ^[y,n]$ ]]; then
         echo "${CWARNING}input error! Please only input 'y' or 'n'${CEND}"
     else
-         [ "${feishu_flag}" == 'y' -a -e "" ] && { echo "${CWARNING}feishu already installed! ${CEND}"; unset feishu_flag; }
+         [ "${feishu_flag}" == 'y' -a -e "/opt/bytedance/feishu/feishu" ] && { echo "${CWARNING}feishu already installed! ${CEND}"; unset feishu_flag; }
         break;
     fi
 done
@@ -157,7 +157,7 @@ while :; do echo
     if [[ ! ${qqmusic_flag} =~ ^[y,n]$ ]]; then
         echo "${CWARNING}input error! Please only input 'y' or 'n'${CEND}"
     else
-         [ "${qqmusic_flag}" == 'y' -a -e "/usr/bin/peek" ] && { echo "${CWARNING}qqmusic already installed! ${CEND}"; unset qqmusic_flag; }
+         [ "${qqmusic_flag}" == 'y' -a -e "/usr/bin/qqmusic" ] && { echo "${CWARNING}qqmusic already installed! ${CEND}"; unset qqmusic_flag; }
         break;
     fi
 done
