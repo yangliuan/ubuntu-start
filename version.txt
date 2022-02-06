@@ -1,3 +1,5 @@
 # newest software version
 dingtalk_ver=2.1.13
 xDroid_ver=7.1021
+wps_ver=11.1.0.10920
+wps_sub_ver=10920
