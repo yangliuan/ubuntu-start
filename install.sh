@@ -231,7 +231,7 @@ while :; do echo
     if [[ ! ${wps_flag} =~ ^[y,n]$ ]]; then
         echo "${CWARNING}input error! Please only input 'y' or 'n'${CEND}"
     else
-        #  [ "${wps_flag}" == 'y' -a -e "/usr/bin/wps" ] && { echo "${CWARNING}wps already installed! ${CEND}"; unset wps_flag; }
+         [ "${wps_flag}" == 'y' -a -e "/usr/bin/wps" ] && { echo "${CWARNING}wps already installed! ${CEND}"; unset wps_flag; }
         break;
     fi
 done
