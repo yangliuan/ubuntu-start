@@ -1,6 +1,7 @@
 #!/bin/bash
 InstallQv2ray(){
     pushd ${start_dir}/src > /dev/null
+
     echo "Download qv2ray ..."
     #文档地址https://qv2ray.net/lang/zh/getting-started/
     src_url="http://mirror.yangliuan.cn/qv2ray.zip" && Download_src
@@ -20,5 +21,6 @@ InstallQv2ray(){
     sudo cp -rfv ${start_dir}/desktop/qv2ray.desktop /usr/share/applications/
     sudo chmod -R 755 /usr/share/applications/qv2ray.desktop
     sudo rm -rf qv2ray.zip
+    
     popd > /dev/null
 }
