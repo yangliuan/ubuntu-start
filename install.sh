@@ -75,7 +75,7 @@ while :; do echo
     if [[ ! ${dingtalk_flag} =~ ^[y,n]$ ]]; then
         echo "${CWARNING}input error! Please only input 'y' or 'n'${CEND}"
     else
-         [ "${dingtalk_flag}" == 'y' -a -e "/opt/dingtalk/dingtalk.AppImage" ] && { echo "${CWARNING}dingtalk already installed! ${CEND}"; unset dingtalk_flag; }
+        [ "${dingtalk_flag}" == 'y' -a -e "/opt/apps/com.alibabainc.dingtalk/files/Elevator.sh" ] && { echo "${CWARNING}dingtalk already installed! ${CEND}"; unset dingtalk_flag; }
         break;
     fi
 done
