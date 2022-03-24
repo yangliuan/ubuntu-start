@@ -80,6 +80,18 @@ while :; do echo
     fi
 done
 
+# check linuxqq
+while :; do echo
+    read -e -p "Do you want to install linuxqq? [y/n](y): " linuxqq_flag
+    linuxqq_flag=${linuxqq_flag:-y}
+    if [[ ! ${linuxqq_flag} =~ ^[y,n]$ ]]; then
+        echo "${CWARNING}input error! Please only input 'y' or 'n'${CEND}"
+    else
+        [ "${linuxqq_flag}" == 'y' -a -e "/usr/local/bin/qq" ] && { echo "${CWARNING}linuxqq already installed! ${CEND}"; unset linuxqq_flag; }
+        break;
+    fi
+done
+
 # check feishu
 while :; do echo
     read -e -p "Do you want to install feishu? [y/n](y): " feishu_flag
@@ -274,6 +286,11 @@ fi
 if [ "${dingtalk_flag}" == 'y' ]; then
     . include/dingtalk.sh
     InstallDingtalk 2>&1 | tee -a ${start_dir}/install.log
+fi
+
+if [ "${linuxqq_flag}" == 'y' ]; then
+    . include/linuxqq.sh
+    InstallLinuxQQ 2>&1 | tee -a ${start_dir}/install.log
 fi
 
 if [ "${feishu_flag}" == 'y' ]; then

@@ -5,7 +5,9 @@ InstallDingtalk(){
 
     echo "Download dingtalk ..."
     src_url="https://dtapp-pub.dingtalk.com/dingtalk-desktop/xc_dingtalk_update/linux_deb/Release/com.alibabainc.dingtalk_${dingtalk_ver}_amd64.deb" && Download_src
-    dpkg -i com.alibabainc.dingtalk_${dingtalk_ver}_amd64.deb
+    sudo dpkg -i com.alibabainc.dingtalk_${dingtalk_ver}_amd64.deb
+    sudo apt-get install -f
+    sudo rm -rfv com.alibabainc.dingtalk_${dingtalk_ver}_amd64.deb
 
     popd > /dev/null
 }
