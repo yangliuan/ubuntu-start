@@ -128,6 +128,18 @@ while :; do echo
     fi
 done
 
+# check indicator stickynotes
+while :; do echo
+    read -e -p "Do you want to install indicator stickynotes? [y/n](y): " indicator_stickynotes_flag
+    indicator_stickynotes_flag=${indicator_stickynotes_flag:-y}
+    if [[ ! ${indicator_stickynotes_flag} =~ ^[y,n]$ ]]; then
+        echo "${CWARNING}input error! Please only input 'y' or 'n'${CEND}"
+    else
+         [ "${indicator_stickynotes_flag}" == 'y' -a -e "/usr/bin/indicator-stickynotes" ] && { echo "${CWARNING}indicator stickynotes already installed! ${CEND}"; unset indicator_stickynotes_flag; }
+        break;
+    fi
+done
+
 # check lantern
 while :; do echo
     read -e -p "Do you want to install lantern? [y/n](y): " lantern_flag
@@ -260,6 +272,7 @@ while :; do echo
     fi
 done
 
+echo > ${start_dir}/install.log
 
 if [ "${remove_flag}" == 'y' ]; then
     . include/remove_liboffice.sh
@@ -306,6 +319,11 @@ fi
 if [ "${indicator_sysmonitor_flag}" == 'y' ]; then
     . include/indicator_sysmonitor.sh
     InstallIndicatorSysmonitor 2>&1 | tee -a ${start_dir}/install.log
+fi
+
+if [ "${indicator_stickynotes_flag}" == 'y' ]; then
+    . include/indicator_stickynotes.sh
+    InstallIndicatorStickynotes 2>&1 | tee -a ${start_dir}/install.log
 fi
 
 if [ "${lantern_flag}" == 'y' ]; then
