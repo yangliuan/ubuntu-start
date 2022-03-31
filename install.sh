@@ -7,6 +7,8 @@ printf "
 #                            Ubuntu start                             #
 #######################################################################
 "
+# Check if user is root
+[ $(id -u) != "0" ] && { echo "${CFAILURE}Error: You must be root to run this script${CEND}"; exit 1; }
 
 start_dir=$(dirname "`readlink -f $0`")
 pushd ${start_dir} > /dev/null
@@ -16,10 +18,9 @@ pushd ${start_dir} > /dev/null
 . ./include/download.sh
 
 
-
 ARG_NUM=$#
-sudo apt-get update && sudo apt-get upgrade
-sudo apt-get install curl wget
+apt-get update && apt-get upgrade
+apt-get install curl wget
 
 # check service desktop
 while :; do echo
@@ -277,108 +278,108 @@ echo > ${start_dir}/install.log
 if [ "${remove_flag}" == 'y' ]; then
     . include/remove_liboffice.sh
     . include/remove_unwanted.sh
-    RemoveUnwanted 2>&1 | tee -a ${start_dir}/install.log
-    RemoveLiboffice 2>&1 | tee -a ${start_dir}/install.log
+    Remove_Unwanted 2>&1 | tee -a ${start_dir}/install.log
+    Remove_Liboffice 2>&1 | tee -a ${start_dir}/install.log
 fi
 
 if [ "${baidunetdisk_flag}" == 'y' ]; then
     . include/baidunetdisk.sh
-    InstallBaidunetdisk 2>&1 | tee -a ${start_dir}/install.log
+    Install_Baidunetdisk 2>&1 | tee -a ${start_dir}/install.log
 fi
 
 if [ "${chrome_flag}" == 'y' ]; then
     . include/chrome.sh
-    InstallChrome 2>&1 | tee -a ${start_dir}/install.log
+    Install_Chrome 2>&1 | tee -a ${start_dir}/install.log
 fi
 
 if [ "${deepinwine_flag}" == 'y' ]; then
     . ./include/deepin_wine.sh
-    InstallDeepinWine 2>&1 | tee -a ${start_dir}/install.log
+    Install_DeepinWine 2>&1 | tee -a ${start_dir}/install.log
 fi
 
 if [ "${dingtalk_flag}" == 'y' ]; then
     . include/dingtalk.sh
-    InstallDingtalk 2>&1 | tee -a ${start_dir}/install.log
+    Install_Dingtalk 2>&1 | tee -a ${start_dir}/install.log
 fi
 
 if [ "${linuxqq_flag}" == 'y' ]; then
     . include/linuxqq.sh
-    InstallLinuxQQ 2>&1 | tee -a ${start_dir}/install.log
+    Install_LinuxQQ 2>&1 | tee -a ${start_dir}/install.log
 fi
 
 if [ "${feishu_flag}" == 'y' ]; then
     . include/feishu.sh
-    InstallFeishu 2>&1 | tee -a ${start_dir}/install.log
+    Install_Feishu 2>&1 | tee -a ${start_dir}/install.log
 fi
 
 if [ "${flameshot_flag}" == 'y' ]; then
     . include/flameshot.sh
-    InstallFlameshot 2>&1 | tee -a ${start_dir}/install.log
+    Install_Flameshot 2>&1 | tee -a ${start_dir}/install.log
 fi
 
 if [ "${indicator_sysmonitor_flag}" == 'y' ]; then
     . include/indicator_sysmonitor.sh
-    InstallIndicatorSysmonitor 2>&1 | tee -a ${start_dir}/install.log
+    Install_IndicatorSysmonitor 2>&1 | tee -a ${start_dir}/install.log
 fi
 
 if [ "${indicator_stickynotes_flag}" == 'y' ]; then
     . include/indicator_stickynotes.sh
-    InstallIndicatorStickynotes 2>&1 | tee -a ${start_dir}/install.log
+    Install_IndicatorStickynotes 2>&1 | tee -a ${start_dir}/install.log
 fi
 
 if [ "${lantern_flag}" == 'y' ]; then
     . include/lantern.sh
-    InstallLantern 2>&1 | tee -a ${start_dir}/install.log
+    Install_Lantern 2>&1 | tee -a ${start_dir}/install.log
 fi
 
 if [ "${neteasy_cloudmusic_flag}" == 'y' ]; then
     . include/neteasy_cloud_music.sh
-    InstallNeteasyCloudMusic 2>&1 | tee -a ${start_dir}/install.log
+    Install_NeteasyCloudMusic 2>&1 | tee -a ${start_dir}/install.log
 fi
 
 if [ "${peek_flag}" == 'y' ]; then
     . include/peek.sh
-    InstallPeek 2>&1 | tee -a ${start_dir}/install.log
+    Install_Peek 2>&1 | tee -a ${start_dir}/install.log
 fi
 
 if [ "${qqmusic_flag}" == 'y' ]; then
     . include/qqmusic.sh
-    InstallQQmusic 2>&1 | tee -a ${start_dir}/install.log
+    Install_QQmusic 2>&1 | tee -a ${start_dir}/install.log
 fi
 
 if [ "${qv2ray_flag}" == 'y' ]; then
     . include/qv2ray.sh
-    InstallQv2ray 2>&1 | tee -a ${start_dir}/install.log
+    Install_Qv2ray 2>&1 | tee -a ${start_dir}/install.log
 fi
 
 if [ "${sougoupinyin_ubuntukylin_flag}" == 'y' ]; then
-    . include/sougoupinyin_ubuntukylin.sh
-    InstallSougoupinyinUbuntukylin 2>&1 | tee -a ${start_dir}/install.log
+    . include/sougoupinyin.sh
+    Install_Sougoupinyin 2>&1 | tee -a ${start_dir}/install.log
 fi
 
 if [ "${sunlogin_flag}" == 'y' ]; then
     . include/sunlogin.sh
-    InstallSunlogin 2>&1 | tee -a ${start_dir}/install.log
+    Install_Sunlogin 2>&1 | tee -a ${start_dir}/install.log
 fi
 
 if [ "${theme_tools_flag}" == 'y' ]; then
     . include/theme_tools.sh
-    InstallThemeTools 2>&1 | tee -a ${start_dir}/install.log
+    Install_ThemeTools 2>&1 | tee -a ${start_dir}/install.log
 fi
 
 if [ "${vlc_flag}" == 'y' ]; then
     . include/vlc.sh
-    InstallVlc 2>&1 | tee -a ${start_dir}/install.log
+    Install_Vlc 2>&1 | tee -a ${start_dir}/install.log
 fi
 
 if [ "${wps_flag}" == 'y' ]; then
     . include/wps.sh
-    InstallWps 2>&1 | tee -a ${start_dir}/install.log
+    Install_Wps 2>&1 | tee -a ${start_dir}/install.log
 fi
 
 if [ "${xDroid_flag}" == 'y' ]; then
     . include/xDroid.sh
-    InstallxDroid 2>&1 | tee -a ${start_dir}/install.log
+    Install_xDroid 2>&1 | tee -a ${start_dir}/install.log
 fi
 
-sudo apt-get autoremove
+apt-get autoremove

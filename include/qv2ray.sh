@@ -1,5 +1,5 @@
 #!/bin/bash
-InstallQv2ray(){
+Install_Qv2ray() {
     pushd ${start_dir}/src > /dev/null
 
     echo "Download qv2ray ..."
@@ -9,18 +9,24 @@ InstallQv2ray(){
 
     if [ ! -e "/home/${run_user}/.config/qv2ray" ]; then
       mkdir /home/${run_user}/.config/qv2ray
-      sudo chown -R ${run_user}.${run_group} /home/${run_user}/.config/qv2ray/
+      chown -R ${run_user}.${run_group} /home/${run_user}/.config/qv2ray/
       chmod -R 755 /home/${run_user}/.config/qv2ray/
     fi
 
-    sudo mv -fv qv2ray/vcore/ /home/${run_user}/.config/qv2ray/
-    sudo mv -fv qv2ray/ /opt/
-    sudo chown -R ${run_user}.${run_group} /home/${run_user}/.config/qv2ray/vcore
-    sudo chown -R ${run_user}.${run_group} /opt/qv2ray
-    sudo chmod u+x /opt/qv2ray
-    sudo cp -rfv ${start_dir}/desktop/qv2ray.desktop /usr/share/applications/
-    sudo chmod -R 755 /usr/share/applications/qv2ray.desktop
-    sudo rm -rf qv2ray.zip
+    mv -fv qv2ray/vcore/ /home/${run_user}/.config/qv2ray/
+    mv -fv qv2ray/ /opt/
+    chown -R ${run_user}.${run_group} /home/${run_user}/.config/qv2ray/vcore
+    chown -R ${run_user}.${run_group} /opt/qv2ray
+    chmod u+x /opt/qv2ray
+    cp -rfv ${start_dir}/desktop/qv2ray.desktop /usr/share/applications/
+    chmod -R 755 /usr/share/applications/qv2ray.desktop
+    rm -rf qv2ray.zip
     
     popd > /dev/null
+}
+
+Uninstall_Qv2ray() {
+    rm -rfv /home/${run_user}/.config/qv2ray
+    rm -rfv /opt/qv2ray
+    rm -rfv /usr/share/applications/qv2ray.desktop
 }

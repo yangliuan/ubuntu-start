@@ -1,12 +1,16 @@
 #!/bin/bash
-InstallSunlogin(){
+Install_Sunlogin() {
     pushd ${start_dir}/src > /dev/null
 
     echo "Download sunlogin ..."
-    src_url="https://down.oray.com/sunlogin/linux/sunloginclient-11.0.0.36662-amd64.deb" && Download_src
-    sudo dpkg -i sunloginclient-11.0.0.36662-amd64.deb
-    sudo apt-get install -f
-    sudo rm -rfv sunloginclient-11.0.0.36662-amd64.deb
+    src_url="https://down.oray.com/sunlogin/linux/sunloginclient-${sunlogin_ver}-amd64.deb" && Download_src
+    dpkg -i sunloginclient-${sunlogin_ver}-amd64.deb
+    apt-get install -f
+    rm -rfv sunloginclient-${sunlogin_ver}-amd64.deb
     
     popd > /dev/null
+}
+
+Uninstall_Sunlogin() {
+    dpkg -P sunloginclient
 }

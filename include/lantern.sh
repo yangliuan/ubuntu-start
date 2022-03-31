@@ -1,12 +1,16 @@
 #!/bin/bash
-InstallLantern(){
+Install_Lantern() {
     pushd ${start_dir}/src > /dev/null
 
     echo "Download lantern ..."
     src_url="http://mirror.yangliuan.cn/lantern-installer-64-bit.deb" && Download_src
-    sudo dpkg -i lantern-installer-64-bit.deb
-    sudo apt-get install -f
-    sudo rm -rfv lantern-installer-64-bit.deb
+    dpkg -i lantern-installer-64-bit.deb
+    apt-get install -f
+    rm -rfv lantern-installer-64-bit.deb
     
     popd > /dev/null
+}
+
+Uninstall_Lantern() {
+    dpkg -P lantern
 }
