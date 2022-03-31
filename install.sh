@@ -201,14 +201,14 @@ while :; do echo
     fi
 done
 
-# check sougoupinyin ubuntukylin
+# check sougoupinyin
 while :; do echo
-    read -e -p "Do you want to install sougoupinyin ubuntukylin? [y/n](y): " sougoupinyin_ubuntukylin_flag
-    sougoupinyin_ubuntukylin_flag=${sougoupinyin_ubuntukylin_flag:-y}
-    if [[ ! ${sougoupinyin_ubuntukylin_flag} =~ ^[y,n]$ ]]; then
+    read -e -p "Do you want to install sougoupinyin? [y/n](y): " sougoupinyin_flag
+    sougoupinyin_flag=${sougoupinyin_flag:-y}
+    if [[ ! ${sougoupinyin_flag} =~ ^[y,n]$ ]]; then
         echo "${CWARNING}input error! Please only input 'y' or 'n'${CEND}"
     else
-         [ "${sougoupinyin_ubuntukylin_flag}" == 'y' -a -e "/usr/bin/sogouImeService" ] && { echo "${CWARNING}sougoupinyin ubuntukylin already installed! ${CEND}"; unset sougoupinyin_ubuntukylin_flag; }
+         [ "${sougoupinyin_flag}" == 'y' -a -e "/usr/bin/sogouImeService" ] && { echo "${CWARNING}sougoupinyin already installed! ${CEND}"; unset sougoupinyin_flag; }
         break;
     fi
 done
@@ -352,7 +352,7 @@ if [ "${qv2ray_flag}" == 'y' ]; then
     Install_Qv2ray 2>&1 | tee -a ${start_dir}/install.log
 fi
 
-if [ "${sougoupinyin_ubuntukylin_flag}" == 'y' ]; then
+if [ "${sougoupinyin_flag}" == 'y' ]; then
     . include/sougoupinyin.sh
     Install_Sougoupinyin 2>&1 | tee -a ${start_dir}/install.log
 fi
