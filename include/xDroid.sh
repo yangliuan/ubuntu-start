@@ -5,7 +5,7 @@ Install_xDroid() {
     pushd ${start_dir}/src > /dev/null
     
     echo "Download xDroid ..."
-    src_url="https://d6.injdk.cn/xdroid/xDroidInstall-x86_64-v${xDroid_ver}.tar.gz" && Download_src
+    src_url="https://d6.injdk.cn/xdroid/xDroidInstall-x86_64-v${xDroid_ver}.zip" && Download_src
     tar -zxvf xDroidInstall-x86_64-v${xDroid_ver}.tar.gz
     -u ${run_user} ./xDroidInstall-x86_64-v${xDroid_ver}.run
     rm -rf xDroidInstall-x86_64-v${xDroid_ver}.tar.gz xDroidInstall-x86_64-v${xDroid_ver}.run
