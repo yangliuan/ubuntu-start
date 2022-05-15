@@ -6,13 +6,13 @@ Install_xDroid() {
     
     echo "Download xDroid ..."
     src_url="https://d6.injdk.cn/xdroid/xDroidInstall-x86_64-v${xDroid_ver}.zip" && Download_src
-    tar -zxvf xDroidInstall-x86_64-v${xDroid_ver}.tar.gz
-    -u ${run_user} ./xDroidInstall-x86_64-v${xDroid_ver}.run
-    rm -rf xDroidInstall-x86_64-v${xDroid_ver}.tar.gz xDroidInstall-x86_64-v${xDroid_ver}.run
+    unzip xDroidInstall-x86_64-v${xDroid_ver}.zip
+    sudo -u ${run_user} ./xDroidInstall-x86_64-v${xDroid_ver}.run
+    rm -rf xDroidInstall-x86_64-v${xDroid_ver}.zip xDroidInstall-x86_64-v${xDroid_ver}.run
 
     popd > /dev/null
 }
 
 Uninstall_xDroid() {
-    -u ${run_user} /opt/xdroid/uninstall
+   sudo -u ${run_user} /opt/xdroid/uninstall
 }
