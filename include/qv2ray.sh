@@ -14,6 +14,12 @@ Install_Qv2ray() {
       chmod -R 755 /home/${run_user}/.config/qv2ray/
     fi
 
+    if [ ! -e "/home/${run_user}/.config/qv2ray/plugins" ]; then
+      mkdir /home/${run_user}/.config/qv2ray/plugins
+      chown -R ${run_user}.${run_group} /home/${run_user}/.config/qv2ray/plugins
+      chmod -R 755 /home/${run_user}/.config/qv2ray/plugins
+    fi
+
     mv -fv qv2ray/vcore/ /home/${run_user}/.config/qv2ray/
     mv -fv QvPlugin-Trojan.v3.0.0.linux-x64.so /home/${run_user}/.config/qv2ray/plugins/
     mv -fv qv2ray/ /opt/
