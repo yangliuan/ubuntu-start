@@ -20,6 +20,10 @@ pushd ${start_dir} > /dev/null
 
 echo "ubuntu version ${Ubuntu_ver}"
 
+#替换软件源为aliyun
+. include/source_list.sh
+Set_Sourcelist 2>&1 | tee -a ${start_dir}/install.log
+
 if [ "${Ubuntu_ver}" == "22" ]; then
     . include/appimage_suport.sh
     Install_AppImageSuport 2>&1 | tee -a ${start_dir}/install.log
