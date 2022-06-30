@@ -16,7 +16,14 @@ pushd ${start_dir} > /dev/null
 . ./version.txt
 . ./options.conf
 . ./include/download.sh
+. ./include/check_os.sh
 
+echo "ubuntu version ${Ubuntu_ver}"
+
+if [ "${Ubuntu_ver}" == "22" ]; then
+    . include/appimage_suport.sh
+    Install_AppImageSuport 2>&1 | tee -a ${start_dir}/install.log
+fi
 
 ARG_NUM=$#
 apt-get update && apt-get upgrade
