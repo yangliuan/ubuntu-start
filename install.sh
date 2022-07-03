@@ -284,6 +284,18 @@ while :; do echo
     fi
 done
 
+# check conky
+while :; do echo
+    read -e -p "Do you want to install conky? [y/n](y): " conky_flag
+    conky_flag=${conky_flag:-y}
+    if [[ ! ${conky_flag} =~ ^[y,n]$ ]]; then
+        echo "${CWARNING}input error! Please only input 'y' or 'n'${CEND}"
+    else
+         [ "${conky_flag}" == 'y' -a -e "/usr/bin/conky" ] && { echo "${CWARNING}conky_flag already installed! ${CEND}"; unset conky_flag; }
+        break;
+    fi
+done
+
 echo > ${start_dir}/install.log
 
 if [ "${remove_flag}" == 'y' ]; then
@@ -391,6 +403,11 @@ fi
 if [ "${xDroid_flag}" == 'y' ]; then
     . include/xDroid.sh
     Install_xDroid 2>&1 | tee -a ${start_dir}/install.log
+fi
+
+if [ "${conky_flag}" == 'y' ]; then
+    . include/conky.sh
+    Install_Conky 2>&1 | tee -a ${start_dir}/install.log
 fi
 
 apt-get autoremove
