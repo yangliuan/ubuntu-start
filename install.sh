@@ -219,7 +219,7 @@ while :; do echo
     if [[ ! ${sougoupinyin_flag} =~ ^[y,n]$ ]]; then
         echo "${CWARNING}input error! Please only input 'y' or 'n'${CEND}"
     else
-         [ "${sougoupinyin_flag}" == 'y' -a -e "/usr/bin/sogouImeService" ] && { echo "${CWARNING}sougoupinyin already installed! ${CEND}"; unset sougoupinyin_flag; }
+         [ "${sougoupinyin_flag}" == 'y' -a -e "/opt/sogoupinyin" ] && { echo "${CWARNING}sougoupinyin already installed! ${CEND}"; unset sougoupinyin_flag; }
         break;
     fi
 done
@@ -231,7 +231,7 @@ while :; do echo
     if [[ ! ${sunlogin_flag} =~ ^[y,n]$ ]]; then
         echo "${CWARNING}input error! Please only input 'y' or 'n'${CEND}"
     else
-         [ "${sunlogin_flag}" == 'y' -a -e "/usr/bin/sogouImeService" ] && { echo "${CWARNING}sunlogin already installed! ${CEND}"; unset sunlogin_flag; }
+         [ "${sunlogin_flag}" == 'y' -a -e "/usr/local/sunlogin" ] && { echo "${CWARNING}sunlogin already installed! ${CEND}"; unset sunlogin_flag; }
         break;
     fi
 done

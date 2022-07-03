@@ -16,7 +16,14 @@ pushd ${start_dir} > /dev/null
 . ./options.conf
 
 uninstall_deepinwine_flag=y
+uninstall_conky_flag=y
+
 if [ "${uninstall_deepinwine_flag}" == 'y' ]; then
     . ./include/deepin_wine.sh
     Uninstall_DeepinWine
+fi
+
+if [ "${uninstall_conky_flag}" == 'y' ]; then
+    . ./include/conky.sh
+    Uninstall_Conky
 fi
