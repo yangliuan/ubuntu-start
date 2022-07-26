@@ -17,22 +17,94 @@ pushd ${start_dir} > /dev/null
 . ./options.conf
 . ./include/download.sh
 . ./include/check_os.sh
-
-echo "ubuntu version ${Ubuntu_ver}"
-
-#替换软件源为aliyun
-. include/source_list.sh;Set_Sourcelist
-
-#安装appimage支持
-if [ "${Ubuntu_ver}" == "22" ]; then
-    . include/appimage_suport.sh
-    Install_AppImageSuport 2>&1 | tee -a ${start_dir}/install.log
-fi
+. ./include/command_parameters.sh
 
 ARG_NUM=$#
-apt-get update && apt-get upgrade
-apt-get install curl wget
+TEMP=`getopt -o hvV --long help,version,baidunetdisk,chrome,deepinwine,dingtalk,linuxqq,feishu,flameshot,indicator_sysmonitor,lantern,neteasy_cloudmusic,qqmusic,peek,qv2ray,sougoupinyin,sunlogin,theme_tools,vlc,wps,xDroid,conky,reboot -- "$@" 2>/dev/null`
+[ $? != 0 ] && echo "${CWARNING}ERROR: unknown argument! ${CEND}" && Show_Help && exit 1
+eval set -- "${TEMP}"
+while :; do
+  [ -z "$1" ] && break;
+  case "$1" in
+    -h|--help)
+      Show_Help; exit 0
+      ;;
+    -v|-V|--version)
+      version; exit 0
+      ;;
+    --baidunetdisk)
+      baidunetdisk_flag=y; shift 1
+      ;;
+    --chrome)
+      chrome_flag=y; shift 1
+      ;;
+    --deepinwine)
+      deepinwine_flag=y; shift 1
+      ;;
+    --dingtalk)
+      dingtalk_flag=y; shift 1
+      ;;
+    --linuxqq)
+      linuxqq_flag=y; shift 1
+      ;;
+    --feishu)
+      feishu_flag=y; shift 1
+      ;;
+    --flameshot)
+      flameshot_flag=y; shift 1
+      ;;
+    --indicator_sysmonitor)
+      indicator_sysmonitor_flag=y; shift 1
+      ;;
+    --lantern)
+      lantern_flag=y; shift 1
+      ;;
+    --neteasy_cloudmusic)
+      neteasy_cloudmusic_flag=y; shift 1
+      ;;
+    --qqmusic)
+      qqmusic_flag=y; shift 1
+      ;;
+    --peek)
+      peek_flag=y; shift 1
+      ;;
+    --qv2ray)
+      qv2ray_flag=y; shift 1
+      ;;
+    --sougoupinyin)
+      sougoupinyin_flag=y; shift 1
+      ;;
+    --sunlogin)
+      sunlogin_flag=y; shift 1
+      ;;
+    --theme_tools)
+      theme_tools_flag=y; shift 1
+      ;;
+    --vlc)
+      vlc_flag=y; shift 1
+      ;;
+    --wps)
+      wps_flag=y; shift 1
+      ;;
+    --xDroid)
+      xDroid_flag=y; shift 1
+      ;;
+    --conky)
+      conky_flag=y; shift 1
+      ;;
+    --reboot)
+      reboot_flag=y; shift 1
+      ;;
+    --)
+      shift
+      ;;
+    *)
+      echo "${CWARNING}ERROR: unknown argument! ${CEND}" && Show_Help && exit 1
+      ;;
+  esac
+done
 
+if [ ${ARG_NUM} == 0 ]; then
 # check service desktop
 while :; do echo
     read -e -p "Do you want to remove Unwanted soft? [y/n](n): " remove_flag
@@ -176,18 +248,6 @@ while :; do echo
     fi
 done
 
-# check peek
-while :; do echo
-    read -e -p "Do you want to install peek? [y/n](y): " peek_flag
-    peek_flag=${peek_flag:-y}
-    if [[ ! ${peek_flag} =~ ^[y,n]$ ]]; then
-        echo "${CWARNING}input error! Please only input 'y' or 'n'${CEND}"
-    else
-         [ "${peek_flag}" == 'y' -a -e "/usr/bin/peek" ] && { echo "${CWARNING}peek already installed! ${CEND}"; unset peek_flag; }
-        break;
-    fi
-done
-
 # check qqmusic
 while :; do echo
     read -e -p "Do you want to install qqmusic? [y/n](y): " qqmusic_flag
@@ -196,6 +256,18 @@ while :; do echo
         echo "${CWARNING}input error! Please only input 'y' or 'n'${CEND}"
     else
          [ "${qqmusic_flag}" == 'y' -a -e "/usr/bin/qqmusic" ] && { echo "${CWARNING}qqmusic already installed! ${CEND}"; unset qqmusic_flag; }
+        break;
+    fi
+done
+
+# check peek
+while :; do echo
+    read -e -p "Do you want to install peek? [y/n](y): " peek_flag
+    peek_flag=${peek_flag:-y}
+    if [[ ! ${peek_flag} =~ ^[y,n]$ ]]; then
+        echo "${CWARNING}input error! Please only input 'y' or 'n'${CEND}"
+    else
+         [ "${peek_flag}" == 'y' -a -e "/usr/bin/peek" ] && { echo "${CWARNING}peek already installed! ${CEND}"; unset peek_flag; }
         break;
     fi
 done
@@ -295,8 +367,22 @@ while :; do echo
         break;
     fi
 done
+fi
 
 echo > ${start_dir}/install.log
+
+echo "ubuntu version ${Ubuntu_ver}"
+#替换软件源为aliyun
+. include/source_list.sh;Set_Sourcelist
+
+#安装appimage支持
+if [ "${Ubuntu_ver}" == "22" ]; then
+    . include/appimage_suport.sh
+    Install_AppImageSuport 2>&1 | tee -a ${start_dir}/install.log
+fi
+
+apt-get update && apt-get upgrade
+apt-get install curl wget
 
 if [ "${remove_flag}" == 'y' ]; then
     . include/remove_liboffice.sh

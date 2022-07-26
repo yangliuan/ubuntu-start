@@ -1,0 +1,33 @@
+#!/bin/bash
+version() {
+  echo "version: 1.0"
+  echo "updated date: 2022-07-11"
+}
+
+Show_Help() {
+  version
+  echo "Usage: $0  command ...[parameters]....
+  --help, -h                  Show this help message
+  --version, -v               Show version info
+  --baidunetdisk              baidu network disk
+  --deepinwine                deepin software wechat qq...
+  --dingtalk_flag             dingtalk
+  --linuxqq                   tencent qq for linux IM tool
+  --feishu                    byte dance office tool
+  --flameshot                 screentshot
+  --indicator_sysmonitor      taskbar system monitoring
+  --indicator_stickynotes     note tool
+  --lantern                   science online
+  --neteasy_cloudmusic        music platform
+  --qqmusic                   music platform
+  --peek                      screenshot for video
+  --qv2ray                    science online
+  --sougoupinyin              sougou input
+  --sunlogin                  remote control tool
+  --theme_tools               ubuntu theme tools
+  --vlc                       video player
+  --wps                       office tool
+  --xDroid                    run android app
+  --conky                     desktop monitoring tool
+  "
+}

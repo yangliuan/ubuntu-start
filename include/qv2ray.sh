@@ -4,31 +4,38 @@ Install_Qv2ray() {
 
     echo "Download qv2ray ..."
     #文档地址https://qv2ray.net/lang/zh/getting-started/
-    src_url="http://mirror.yangliuan.cn/qv2ray.zip" && Download_src
-    src_url="http://mirror.yangliuan.cn/QvPlugin-Trojan.v3.0.0.linux-x64.so" && Download_src
-    unzip qv2ray.zip
+    src_url="http://mirror.yangliuan.cn/qv2ray.tar.xz" && Download_src
+    tar xJf qv2ray.tar.xz
 
     if [ ! -e "/home/${run_user}/.config/qv2ray" ]; then
       mkdir /home/${run_user}/.config/qv2ray
-      chown -R ${run_user}.${run_group} /home/${run_user}/.config/qv2ray/
-      chmod -R 755 /home/${run_user}/.config/qv2ray/
     fi
 
     if [ ! -e "/home/${run_user}/.config/qv2ray/plugins" ]; then
       mkdir /home/${run_user}/.config/qv2ray/plugins
-      chown -R ${run_user}.${run_group} /home/${run_user}/.config/qv2ray/plugins
-      chmod -R 755 /home/${run_user}/.config/qv2ray/plugins
     fi
 
+    #内核文件
     mv -fv qv2ray/vcore/ /home/${run_user}/.config/qv2ray/
-    mv -fv QvPlugin-Trojan.v3.0.0.linux-x64.so /home/${run_user}/.config/qv2ray/plugins/
+    #插件文件
+    mv -fv qv2ray/plugins/* /home/${run_user}/.config/qv2ray/plugins/
+    rm -rf qv2ray/plugins
+    #覆盖原始geoip文件
+    mv -fv qv2ray/geoip/* /home/${run_user}/.config/qv2ray/vcore
+    rm -rf qv2ray/geoip
+    #appimage
     mv -fv qv2ray/ /opt/
+    cp -rfv ${start_dir}/desktop/qv2ray.desktop /usr/share/applications/
+
+    #修改文件权限
     chown -R ${run_user}.${run_group} /home/${run_user}/.config/qv2ray/vcore
     chown -R ${run_user}.${run_group} /opt/qv2ray
     chmod u+x /opt/qv2ray
-    cp -rfv ${start_dir}/desktop/qv2ray.desktop /usr/share/applications/
+    chown -R ${run_user}.${run_group} /home/${run_user}/.config/qv2ray/
+    chmod -R 755 /home/${run_user}/.config/qv2ray/
+    chown -R ${run_user}.${run_group} /home/${run_user}/.config/qv2ray/plugins
+    chmod -R 755 /home/${run_user}/.config/qv2ray/plugins
     chmod -R 755 /usr/share/applications/qv2ray.desktop
-    rm -rf qv2ray.zip
     
     popd > /dev/null
 }
