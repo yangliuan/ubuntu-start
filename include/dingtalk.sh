@@ -13,5 +13,5 @@ Install_Dingtalk() {
 }
 
 Uninstall_Dingtalk() {
-    dpkg -P com.alibabainc.dingtalk_${dingtalk_ver}_amd64.deb
+    dpkg -P com.alibabainc.dingtalk
 }

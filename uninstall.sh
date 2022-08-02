@@ -118,4 +118,9 @@ if [ "${qv2ray_flag}" == 'y' ]; then
     Uninstall_Qv2ray
 fi
 
+if [ "${dingtalk_flag}" == 'y' ]; then
+    . ./include/dingtalk.sh
+    Uninstall_Dingtalk
+fi
+
 apt-get autoremove
