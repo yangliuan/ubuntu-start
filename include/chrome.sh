@@ -3,7 +3,7 @@ Install_Chrome() {
     pushd ${start_dir}/src > /dev/null
 
     echo "Download chrome ..."
-    src_url="http://mirror.yangliuan.cn/google-chrome-stable_current_amd64.deb" && Download_src
+    src_url="https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb" && Download_src
     dpkg -i google-chrome-stable_current_amd64.deb
     apt-get install -f
     rm -rfv google-chrome-stable_current_amd64.deb
