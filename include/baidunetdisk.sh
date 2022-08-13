@@ -3,10 +3,10 @@ Install_Baidunetdisk() {
     pushd ${start_dir}/src > /dev/null
 
     echo "Download baidunetdisk ..."
-    src_url="https://issuepcdn.baidupcs.com/issue/netdisk/LinuxGuanjia/4.3.0/baidunetdisk_4.3.0_amd64.deb" && Download_src
-    dpkg -i baidunetdisk_4.3.0_amd64.deb
+    src_url="https://issuepcdn.baidupcs.com/issue/netdisk/LinuxGuanjia/${baidunetdisk_ver}/baidunetdisk_${baidunetdisk_ver}_amd64.deb" && Download_src
+    dpkg -i baidunetdisk_${baidunetdisk_ver}_amd64.deb
     apt-get install -f
-    rm -rfv baidunetdisk_4.3.0_amd64.deb
+    rm -rfv baidunetdisk_${baidunetdisk_ver}_amd64.deb
     
     popd > /dev/null
 }
