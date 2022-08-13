@@ -382,7 +382,7 @@ if [ "${Ubuntu_ver}" == "22" ]; then
 fi
 
 apt-get update && apt-get upgrade
-apt-get install curl wget
+apt-get install curl wget git
 
 if [ "${remove_flag}" == 'y' ]; then
     . include/remove_liboffice.sh
