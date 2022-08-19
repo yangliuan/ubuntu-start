@@ -20,6 +20,7 @@ Uninstall_NeteasyCloudMusic() {
 }
 
 #support for ubuntu2204
+#REF https://blog.csdn.net/leibris/article/details/124895824
 PatchFor2204() {
     if [ -e /opt/netease/netease-cloud-music/netease-cloud-music.bash ]; then
         apt install libqt5webchannel5
