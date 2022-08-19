@@ -12,7 +12,7 @@ Install_ThemeTools() {
 
 Uninstall_ThemeTools() {
     if [ "${Ubuntu_ver}" == "22" ]; then
-        apt-get autoremove gnome-tweak
+        apt-get autoremove gnome-tweaks
     else
         apt-get autoremove gnome-tweak-tool
     fi

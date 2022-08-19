@@ -377,7 +377,7 @@ echo "ubuntu version ${Ubuntu_ver}"
 
 #安装appimage支持
 if [ "${Ubuntu_ver}" == "22" ]; then
-    echo "${Ubuntu_ver}"
+    #echo "${Ubuntu_ver}"
     . include/appimage_suport.sh
     Install_AppImageSuport 2>&1 | tee -a ${start_dir}/install.log
 fi
