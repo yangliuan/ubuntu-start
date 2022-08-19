@@ -9,8 +9,21 @@ Install_NeteasyCloudMusic() {
     rm -rfv netease-cloud-music_1.2.1_amd64_ubuntu_20190428.deb
     
     popd > /dev/null
+
+    if [ "${Ubuntu_ver}" == "22" ]; then
+        PatchFor2204
+    fi
 }
 
 Uninstall_NeteasyCloudMusic() {
     dpkg -P netease-cloud-music
+}
+
+#support for ubuntu2204
+PatchFor2204() {
+    if [ -e /opt/netease/netease-cloud-music/netease-cloud-music.bash ]; then
+        apt install libqt5webchannel5
+        sed -i 's@export LD_LIBRARY_PATH="${HERE}"/libs@export LD_LIBRARY_PATH="${HERE}"/libs:$LD_LIBRARY_PATH@' /opt/netease/netease-cloud-music/netease-cloud-music.bash
+        sed -i "s@exec@cd /lib/x86_64-linux-gnu/\nexec@g" /opt/netease/netease-cloud-music/netease-cloud-music.bash
+    fi
 }
