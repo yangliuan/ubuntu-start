@@ -123,4 +123,9 @@ if [ "${dingtalk_flag}" == 'y' ]; then
     Uninstall_Dingtalk
 fi
 
+if [ "${qqmusic_flag}" == 'y' ]; then
+    . ./include/qqmusic.sh
+    Uninstall_QQmusic
+fi
+
 apt-get autoremove
