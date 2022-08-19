@@ -128,4 +128,9 @@ if [ "${qqmusic_flag}" == 'y' ]; then
     Uninstall_QQmusic
 fi
 
+if [ "${xDroid_flag}" == 'y' ]; then
+    . ./include/xDroid.sh
+    Uninstall_xDroid
+fi
+
 apt-get autoremove
