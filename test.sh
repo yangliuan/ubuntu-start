@@ -19,4 +19,7 @@ pushd ${start_dir} > /dev/null
 . ./include/command_parameters.sh
 
 # . include/neteasy_cloud_music.sh
-# PatchFor2204 2>&1 | tee -a ${start_dir}/test.log
+# Patch_NeteasyCloudMusicFor2204 2>&1 | tee -a ${start_dir}/test.log
+
+# . include/qqmusic.sh
+# Patch_QQmusicFor2204 2>&1 | tee -a ${start_dir}/test.log
