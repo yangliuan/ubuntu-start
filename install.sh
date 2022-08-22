@@ -375,11 +375,11 @@ echo "ubuntu version ${Ubuntu_ver}"
 #替换软件源为aliyun
 . include/source_list.sh;Set_Sourcelist
 
-#安装appimage支持
+#安装ubuntu22.04补丁支持
 if [ "${Ubuntu_ver}" == "22" ]; then
     #echo "${Ubuntu_ver}"
-    . include/appimage_suport.sh
-    Install_AppImageSuport 2>&1 | tee -a ${start_dir}/install.log
+    . include/patch_suport.sh
+    Install_PatchSuport 2>&1 | tee -a ${start_dir}/install.log
 fi
 
 apt-get update && apt-get upgrade
