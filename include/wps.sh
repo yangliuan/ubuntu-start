@@ -7,7 +7,11 @@ Install_Wps() {
     dpkg -i wps-office_${wps_ver}_amd64.deb
     apt-get install -f
     rm -rfv wps-office_${wps_ver}_amd64.deb
-    
+    #install wps font
+    src_url="http://mirror.yangliuan.cn/wps_symbol_fonts.zip" && Download_src
+    unzip wps_symbol_fonts.zip -d /usr/share/fonts
+    fc-cache
+    rm -rf 
     popd > /dev/null
 }
 
