@@ -9,4 +9,7 @@ Install_PatchSuport() {
     #浏览器上传下载卡住问题
     #REF https://askubuntu.com/questions/1402530/running-any-chromium-based-browser-in-ubuntu-22-04-freezes
     apt install xdg-desktop-portal-gnome
+    #ntfs支持
+    #https://github.com/tuxera/ntfs-3g/wiki
+    apt install ntfs-3g
 }
