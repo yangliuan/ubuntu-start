@@ -9,7 +9,7 @@ Install_IndicatorSysmonitor() {
     popd > /dev/null
     rm -rf indicator-sysmonitor
     popd > /dev/null
-    nohup indicator-sysmonitor &
+    #nohup indicator-sysmonitor &
 }
 
 Uninstall_IndicatorSysmonitor() {

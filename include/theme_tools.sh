@@ -1,7 +1,7 @@
 #!/bin/bash
 Install_ThemeTools() {
     if [ "${Ubuntu_ver}" == "22" ]; then
-        apt-get install gnome-tweak
+        apt-get install gnome-tweaks
     else
         apt-get install gnome-tweak-tool
     fi

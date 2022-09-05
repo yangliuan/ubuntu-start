@@ -498,3 +498,5 @@ if [ "${conky_flag}" == 'y' ]; then
 fi
 
 apt-get autoremove
+
+chown -R ${run_user}.root /opt
