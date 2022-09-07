@@ -375,13 +375,6 @@ echo "ubuntu version ${Ubuntu_ver}"
 #替换软件源为aliyun
 . include/source_list.sh;Set_Sourcelist
 
-#安装ubuntu22.04补丁支持
-if [ "${Ubuntu_ver}" == "22" ]; then
-    #echo "${Ubuntu_ver}"
-    . include/patch_suport.sh
-    Install_PatchSuport 2>&1 | tee -a ${start_dir}/install.log
-fi
-
 apt-get update && apt-get upgrade
 apt-get install curl wget git gcc make
 
@@ -497,6 +490,12 @@ if [ "${conky_flag}" == 'y' ]; then
     Install_Conky 2>&1 | tee -a ${start_dir}/install.log
 fi
 
-apt-get autoremove
+
+#安装ubuntu22.04补丁支持
+if [ "${Ubuntu_ver}" == "22" ]; then
+    #echo "${Ubuntu_ver}"
+    . include/patch_suport.sh
+    Install_PatchSuport 2>&1 | tee -a ${start_dir}/install.log
+fi
 
 chown -R ${run_user}.root /opt
