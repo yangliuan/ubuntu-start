@@ -92,6 +92,9 @@ while :; do
     --conky)
       conky_flag=y; shift 1
       ;;
+    --my_weather_indicator)
+      my_weather_indicator_flag=y; shift 1
+      ;;
     --reboot)
       reboot_flag=y; shift 1
       ;;
@@ -367,7 +370,21 @@ while :; do echo
         break;
     fi
 done
+
+# check my weather indicator
+while :; do echo
+    read -e -p "Do you want to install my weather indicator? [y/n](y): " my_weather_indicator_flag
+    my_weather_indicator_flag=${my_weather_indicator_flag:-y}
+    if [[ ! ${my_weather_indicator_flag} =~ ^[y,n]$ ]]; then
+        echo "${CWARNING}input error! Please only input 'y' or 'n'${CEND}"
+    else
+         [ "${my_weather_indicator_flag}" == 'y' -a -e "/opt/extras.ubuntu.com/my-weather-indicator/bin/my-weather-indicator" ] && { echo "${CWARNING}my_weather_indicator_flag already installed! ${CEND}"; unset my_weather_indicator_flag; }
+        break;
+    fi
+done
+
 fi
+
 
 echo > ${start_dir}/install.log
 
@@ -490,6 +507,10 @@ if [ "${conky_flag}" == 'y' ]; then
     Install_Conky 2>&1 | tee -a ${start_dir}/install.log
 fi
 
+if [ "${my_weather_indicator_flag}" == 'y' ]; then
+    . include/my_weather_indicator.sh
+    Install_MyWeatherIndicator 2>&1 | tee -a ${start_dir}/install.log
+fi
 
 #安装ubuntu22.04补丁支持
 if [ "${Ubuntu_ver}" == "22" ]; then
