@@ -103,19 +103,19 @@ while :; do
   esac
 done
 
+if [ "${baidunetdisk_flag}" == 'y' ]; then
+    . ./include/baidunetdisk.sh
+    Uninstall_Baidunetdisk
+fi
+
+if [ "${chrome_flag}" == 'y' ]; then
+    . ./include/chrome.sh
+    Uninstall_Chrome
+fi
+
 if [ "${deepinwine_flag}" == 'y' ]; then
     . ./include/deepin_wine.sh
     Uninstall_DeepinWine
-fi
-
-if [ "${conky_flag}" == 'y' ]; then
-    . ./include/conky.sh
-    Uninstall_Conky
-fi
-
-if [ "${qv2ray_flag}" == 'y' ]; then
-    . ./include/qv2ray.sh
-    Uninstall_Qv2ray
 fi
 
 if [ "${dingtalk_flag}" == 'y' ]; then
@@ -123,14 +123,84 @@ if [ "${dingtalk_flag}" == 'y' ]; then
     Uninstall_Dingtalk
 fi
 
+if [ "${linuxqq_flag}" == 'y' ]; then
+    . ./include/linuxqq.sh
+    Uninstall_LinuxQQ
+fi
+
+if [ "${feishu_flag}" == 'y' ]; then
+    . ./include/feishu.sh
+    Uninstall_Feishu
+fi
+
+if [ "${flameshot_flag}" == 'y' ]; then
+    . ./include/flameshot.sh
+    Uninstall_Flameshot
+fi
+
+if [ "${indicator_sysmonitor_flag}" == 'y' ]; then
+    . ./include/indicator_sysmonitor.sh
+    Uninstall_IndicatorSysmonitor
+fi
+
+if [ "${lantern_flag}" == 'y' ]; then
+    . ./include/lantern.sh
+    Uninstall_Lantern
+fi
+
+if [ "${neteasy_cloudmusic_flag}" == 'y' ]; then
+    . ./include/neteasy_cloud_music.sh
+    Uninstall_NeteasyCloudMusic
+fi
+
 if [ "${qqmusic_flag}" == 'y' ]; then
     . ./include/qqmusic.sh
     Uninstall_QQmusic
 fi
 
+if [ "${peek_flag}" == 'y' ]; then
+    . ./include/peek.sh
+    Uninstall_Peek
+fi
+
+if [ "${qv2ray_flag}" == 'y' ]; then
+    . ./include/qv2ray.sh
+    Uninstall_Qv2ray
+fi
+
+if [ "${sougoupinyin_flag}" == 'y' ]; then
+    . ./include/sougoupinyin.sh
+    Uninstall_Sougoupinyin
+fi
+
+if [ "${sunlogin_flag}" == 'y' ]; then
+    . ./include/sunlogin.sh
+    Uninstall_Sunlogin
+fi
+
+if [ "${theme_tools_flag}" == 'y' ]; then
+    . ./include/theme_tools.sh
+    Uninstall_ThemeTools
+fi
+
+if [ "${vlc_flag}" == 'y' ]; then
+    . ./include/vlc.sh
+    Uninstall_Vlc
+fi
+
+if [ "${wps_flag}" == 'y' ]; then
+    . ./include/wps.sh
+    Uninstall_Wps
+fi
+
 if [ "${xDroid_flag}" == 'y' ]; then
     . ./include/xDroid.sh
     Uninstall_xDroid
+fi
+
+if [ "${conky_flag}" == 'y' ]; then
+    . ./include/conky.sh
+    Uninstall_Conky
 fi
 
 apt-get autoremove
