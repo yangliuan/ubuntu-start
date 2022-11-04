@@ -13,6 +13,6 @@ Install_IndicatorSysmonitor() {
 }
 
 Uninstall_IndicatorSysmonitor() {
-    autoremove python3-psutil gir1.2-appindicator3-0.1
+    apt autoremove python3-psutil gir1.2-appindicator3-0.1
     rm -rf /usr/lib/indicator-sysmonitor /usr/bin/indicator-sysmonitor
 }
