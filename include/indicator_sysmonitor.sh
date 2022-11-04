@@ -1,4 +1,5 @@
 #!/bin/bash
+#https://github.com/fossfreedom/indicator-sysmonitor
 Install_IndicatorSysmonitor() {
     apt install python3-psutil gir1.2-appindicator3-0.1
     pushd ${start_dir}/src > /dev/null
