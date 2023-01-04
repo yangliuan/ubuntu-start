@@ -7,7 +7,7 @@ Install_LinuxQQ() {
     dpkg -i linuxqq_${linuxqq_ver}_amd64.deb
     apt-get install -f
     rm -rfv linuxqq_${linuxqq_ver}_amd64.deb
-    
+    chmod -R 777  /opt/QQ
     popd > /dev/null
 }
 
