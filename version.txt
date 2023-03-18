@@ -1,7 +1,7 @@
 # newest software version
 baidunetdisk_ver=4.11.5
 dingtalk_ver=1.4.0.20422
-linuxqq_ver=3.0.0-571
+linuxqq_ver=3.1.0-9572
 xDroid_ver=9.0.15
 wps_ver=11.1.0.11664
 wps_sub_ver=11664
