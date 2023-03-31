@@ -19,7 +19,7 @@ pushd ${start_dir} > /dev/null
 . ./include/command_parameters.sh
 
 ARG_NUM=$#
-TEMP=`getopt -o hvV --long help,version,baidunetdisk,chrome,deepinwine,dingtalk,linuxqq,feishu,flameshot,indicator_sysmonitor,lantern,neteasy_cloudmusic,qqmusic,peek,qv2ray,sougoupinyin,sunlogin,theme_tools,vlc,wps,xDroid,conky,reboot -- "$@" 2>/dev/null`
+TEMP=`getopt -o hvV --long help,version,baidunetdisk,chrome,deepinwine,dingtalk,linuxqq,feishu,flameshot,indicator_sysmonitor,lantern,neteasy_cloudmusic,qqmusic,peek,qv2ray,sougoupinyin,sunlogin,theme_tools,vlc,wps,xDroid,conky,my_weather_indicator,gnome_pomodoro,reboot -- "$@" 2>/dev/null`
 [ $? != 0 ] && echo "${CWARNING}ERROR: unknown argument! ${CEND}" && Show_Help && exit 1
 eval set -- "${TEMP}"
 while :; do
@@ -90,6 +90,12 @@ while :; do
       ;;
     --conky)
       conky_flag=y; shift 1
+      ;;
+    --my_weather_indicator)
+      my_weather_indicator_flag=y; shift 1
+      ;;
+    --gnome_pomodoro)
+      gnome_pomodoro_flag=y; shift 1
       ;;
     --reboot)
       reboot_flag=y; shift 1
@@ -201,6 +207,16 @@ fi
 if [ "${conky_flag}" == 'y' ]; then
     . ./include/conky.sh
     Uninstall_Conky
+fi
+
+if [ "${my_weather_indicator_flag}" == 'y' ]; then
+    . include/my_weather_indicator.sh
+    Uninstall_MyWeatherIndicator
+fi
+
+if [ "${gnome_pomodoro_flag}" == 'y' ]; then
+    . include/gnomepomodoro.sh
+    Uninstall_GnomePomodoro
 fi
 
 apt-get autoremove
