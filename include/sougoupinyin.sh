@@ -1,4 +1,5 @@
 #!/bin/bash
+#https://shurufa.sogou.com/linux
 Install_Sougoupinyin() {
     pushd ${start_dir}/src > /dev/null
 

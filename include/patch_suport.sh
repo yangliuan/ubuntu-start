@@ -4,7 +4,7 @@ Install_PatchSuport() {
     Install_Appimage
     Install_XdgDesktopPortalGnome
     Install_Ntfs3g
-    Reinstal_GnomeCenter
+    #Reinstal_GnomeCenter
     ResetTimeForWindow
 }
 
