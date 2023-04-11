@@ -1,10 +1,8 @@
 #!/bin/bash
 Install_PatchSuport() {
-    apt autoremove
     Install_Appimage
     Install_XdgDesktopPortalGnome
     Install_Ntfs3g
-    #Reinstal_GnomeCenter
     ResetTimeForWindow
 }
 
@@ -31,7 +29,7 @@ Install_Ntfs3g() {
     apt install ntfs-3g
 }
 
-Reinstal_GnomeCenter (){
+Reinstall_GnomeCenter (){
     #防止gnome依赖出现问题导致设置中心无法使用
     apt install gnome-control-center --reinstall
 }

@@ -10,7 +10,7 @@ Install_Sougoupinyin() {
     cp /usr/share/applications/fcitx.desktop /etc/xdg/autostart/
     dpkg -i sogoupinyin_${sougoupinyin_ver}_amd64.deb
     apt-get -f install
-    apt-get purge ibus
+    #apt-get purge ibus
     apt-get install libqt5qml5 libqt5quick5 libqt5quickwidgets5 qml-module-qtquick2
     apt-get install libgsettings-qt1
     rm -rfv sogoupinyin_${sougoupinyin_ver}_amd64.deb

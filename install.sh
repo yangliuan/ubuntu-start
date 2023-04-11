@@ -18,9 +18,10 @@ pushd ${start_dir} > /dev/null
 . ./include/download.sh
 . ./include/check_os.sh
 . ./include/command_parameters.sh
+. include/patch_suport.sh
 
 ARG_NUM=$#
-TEMP=`getopt -o hvV --long help,version,baidunetdisk,chrome,deepinwine,dingtalk,linuxqq,feishu,flameshot,indicator_sysmonitor,lantern,neteasy_cloudmusic,qqmusic,peek,qv2ray,sougoupinyin,sunlogin,theme_tools,vlc,wps,xDroid,conky,my_weather_indicator,gnome_pomodoro,reboot -- "$@" 2>/dev/null`
+TEMP=`getopt -o hvV --long help,version,baidunetdisk,chrome,deepinwine,dingtalk,linuxqq,feishu,flameshot,indicator_sysmonitor,lantern,neteasy_cloudmusic,qqmusic,peek,qv2ray,sougoupinyin,sunlogin,theme_tools,vlc,wps,xDroid,conky,my_weather_indicator,gnome_pomodoro,gnome_center,reboot -- "$@" 2>/dev/null`
 [ $? != 0 ] && echo "${CWARNING}ERROR: unknown argument! ${CEND}" && Show_Help && exit 1
 eval set -- "${TEMP}"
 while :; do
@@ -97,6 +98,9 @@ while :; do
       ;;
     --gnome_pomodoro)
       gnome_pomodoro_flag=y; shift 1
+      ;;
+    --gnome_center)
+      gnome_center_flag=y; shift 1
       ;;
     --reboot)
       reboot_flag=y; shift 1
@@ -398,6 +402,18 @@ while :; do echo
     fi
 done
 
+# check reinstall gnome center
+while :; do echo
+    read -e -p "Do you want to reinstall gnome center? [y/n](y): " gnome_center_flag
+    gnome_center_flag=${gnome_center_flag:-n}
+    if [[ ! ${gnome_center_flag} =~ ^[y,n]$ ]]; then
+        echo "${CWARNING}input error! Please only input 'y' or 'n'${CEND}"
+    else
+         [ "${gnome_center_flag}" == 'y' -a -e "" ] && { echo "${CWARNING}gnome_pomodoro_flag already installed! ${CEND}"; unset gnome_center_flag; }
+        break;
+    fi
+done
+
 fi
 
 
@@ -535,8 +551,13 @@ fi
 #install ubuntu 22.04 patch
 if [ "${Ubuntu_ver}" == "22" ]; then
     #echo "${Ubuntu_ver}"
-    . include/patch_suport.sh
     Install_PatchSuport 2>&1 | tee -a ${start_dir}/install.log
 fi
+
+#reinstall gnome center
+if [ "${gnome_center_flag}" == 'y' ]; then
+    Reinstall_GnomeCenter 2>&1 | tee -a ${start_dir}/install.log
+fi
+
 
 chown -R ${run_user}.root /opt
