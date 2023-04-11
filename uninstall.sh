@@ -19,7 +19,7 @@ pushd ${start_dir} > /dev/null
 . ./include/command_parameters.sh
 
 ARG_NUM=$#
-TEMP=`getopt -o hvV --long help,version,baidunetdisk,chrome,deepinwine,dingtalk,linuxqq,feishu,flameshot,indicator_sysmonitor,lantern,neteasy_cloudmusic,qqmusic,peek,qv2ray,sougoupinyin,sunlogin,theme_tools,vlc,wps,xDroid,conky,my_weather_indicator,gnome_pomodoro,reboot -- "$@" 2>/dev/null`
+TEMP=`getopt -o hvV --long help,version,all,baidunetdisk,chrome,deepinwine,dingtalk,linuxqq,feishu,flameshot,indicator_sysmonitor,lantern,neteasy_cloudmusic,qqmusic,peek,qv2ray,sougoupinyin,sunlogin,theme_tools,vlc,wps,xDroid,conky,my_weather_indicator,gnome_pomodoro,reboot -- "$@" 2>/dev/null`
 [ $? != 0 ] && echo "${CWARNING}ERROR: unknown argument! ${CEND}" && Show_Help && exit 1
 eval set -- "${TEMP}"
 while :; do
@@ -30,6 +30,31 @@ while :; do
       ;;
     -v|-V|--version)
       version; exit 0
+      ;;
+    --all)
+      baidunetdisk_flag=y
+      chrome_flag=y
+      deepinwine_flag=y
+      dingtalk_flag=y
+      linuxqq_flag=y
+      feishu_flag=y
+      flameshot_flag=y
+      indicator_sysmonitor_flag=y
+      lantern_flag=y
+      neteasy_cloudmusic_flag=y
+      qqmusic_flag=y
+      peek_flag=y
+      qv2ray_flag=y
+      sougoupinyin_flag=y
+      sunlogin_flag=y
+      #theme_tools_flag=y
+      vlc_flag=y
+      wps_flag=y
+      xDroid_flag=y
+      conky_flag=y
+      my_weather_indicator_flag=y
+      gnome_pomodoro_flag=y
+      shift 1
       ;;
     --baidunetdisk)
       baidunetdisk_flag=y; shift 1
@@ -108,6 +133,8 @@ while :; do
       ;;
   esac
 done
+
+
 
 if [ "${baidunetdisk_flag}" == 'y' ]; then
     . ./include/baidunetdisk.sh
