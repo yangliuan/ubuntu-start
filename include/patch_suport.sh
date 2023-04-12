@@ -1,8 +1,8 @@
 #!/bin/bash
 Install_PatchSuport() {
-    Install_Appimage
-    Install_XdgDesktopPortalGnome
-    Install_Ntfs3g
+    #Install_Appimage
+    #Install_XdgDesktopPortalGnome
+    #Install_Ntfs3g
     ResetTimeForWindow
 }
 

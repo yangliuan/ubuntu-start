@@ -549,10 +549,10 @@ if [ "${gnome_pomodoro_flag}" == 'y' ]; then
 fi
 
 #install ubuntu 22.04 patch
-if [ "${Ubuntu_ver}" == "22" ]; then
-    #echo "${Ubuntu_ver}"
-    Install_PatchSuport 2>&1 | tee -a ${start_dir}/install.log
-fi
+# if [ "${Ubuntu_ver}" == "22" ]; then
+#     #echo "${Ubuntu_ver}"
+#     Install_PatchSuport 2>&1 | tee -a ${start_dir}/install.log
+# fi
 
 #reinstall gnome center
 if [ "${gnome_center_flag}" == 'y' ]; then
