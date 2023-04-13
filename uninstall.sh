@@ -45,9 +45,9 @@ while :; do
       qqmusic_flag=y
       peek_flag=y
       qv2ray_flag=y
-      sougoupinyin_flag=y
+      imput_method_flag=y
       sunlogin_flag=y
-      #theme_tools_flag=y
+      theme_tools_flag=y
       vlc_flag=y
       wps_flag=y
       xDroid_flag=y
@@ -95,8 +95,17 @@ while :; do
     --qv2ray)
       qv2ray_flag=y; shift 1
       ;;
+    --input_method)
+      imput_method_flag=y; shift 1
+      ;;
+    --googlepinyin)
+      googlepinyin_flag=y; shift 1
+      ;;
     --sougoupinyin)
       sougoupinyin_flag=y; shift 1
+      ;;
+    --baidupinyin)
+      baidupinyin_flag=y; shift 1
       ;;
     --sunlogin)
       sunlogin_flag=y; shift 1
@@ -134,7 +143,11 @@ while :; do
   esac
 done
 
-
+if [ "${input_method_flag}" == 'y' ]; then
+    googlepinyin_flag=y;
+    sougoupinyin_flag=y;
+    baidupinyin_flag=y;
+fi
 
 if [ "${baidunetdisk_flag}" == 'y' ]; then
     . ./include/baidunetdisk.sh
@@ -201,9 +214,19 @@ if [ "${qv2ray_flag}" == 'y' ]; then
     Uninstall_Qv2ray
 fi
 
+if [ "${googlepinyin_flag}" == 'y' ]; then
+    . ./include/input-method/fcitx_googlepinyin.sh
+    Uninstall_GooglePinyin
+fi
+
 if [ "${sougoupinyin_flag}" == 'y' ]; then
-    . ./include/sougoupinyin.sh
+    . ./include/input-method/fcitx_sougoupinyin.sh
     Uninstall_Sougoupinyin
+fi
+
+if [ "${baidupinyin_flag}" == 'y' ]; then
+    . ./include/input-method/fcitx_baidupinyin.sh
+    Uninstall_Baidupinyin
 fi
 
 if [ "${sunlogin_flag}" == 'y' ]; then

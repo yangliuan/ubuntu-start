@@ -5,3 +5,7 @@ Install_Baidupinyin() {
 
     echo "Download baidu pinyin..."
 }
+
+Uninstall_Baidupinyin() {
+    echo "uninstall baidupinyin"
+}

@@ -126,6 +126,35 @@ while :; do echo
     fi
 done
 
+# check input method
+while :; do echo
+    read -e -p "Do you want to install input method? [y/n](y): " input_method_flag
+    input_method_flag=${input_method_flag:-y}
+    if [[ ! ${input_method_flag} =~ ^[y,n]$ ]]; then
+        echo "${CWARNING}input error! Please only input 'y' or 'n'${CEND}"
+    else
+        if [ "${input_method_flag}" == 'y' ]; then
+            while :; do echo
+                echo 'Please select input method:'
+                echo -e "\t${CMSG}1${CEND}. Install googlepinyin"
+                echo -e "\t${CMSG}2${CEND}. Install sougoupinyin"
+                echo -e "\t${CMSG}3${CEND}. Install baidupinyin"
+                read -e -p "Please input a number:(Default 1 press Enter) " input_method_option
+                input_method_option=${input_method_option:-1}
+                if [[ ! ${input_method_option} =~ ^[1-3]$ ]]; then
+                    echo "${CWARNING}input error! Please only input number 1~4${CEND}"
+                else
+                    [ "${input_method_option}" = '1' -a -e "/usr/lib/x86_64-linux-gnu/fcitx/fcitx-googlepinyin.so" ] && { echo "${CWARNING}googlepinyin already installed! ${CEND}"; unset input_method_option; }
+                    [ "${input_method_option}" = '2' -a -e "/opt/sogoupinyin" ] && { echo "${CWARNING}sougoupinyin already installed! ${CEND}"; unset input_method_option; }
+                    [ "${input_method_option}" = '3' -a -e "/opt/baidupinyin" ] && { echo "${CWARNING}baidupinyin already installed! ${CEND}"; unset input_method_option; }
+                    break
+                fi
+            done
+        fi
+        break;
+    fi
+done
+
 # check Baidunetdisk 
 while :; do echo
     read -e -p "Do you want to install baidunetdisk? [y/n](y): " baidunetdisk_flag
@@ -294,18 +323,6 @@ while :; do echo
     fi
 done
 
-# check sougoupinyin
-while :; do echo
-    read -e -p "Do you want to install sougoupinyin? [y/n](y): " sougoupinyin_flag
-    sougoupinyin_flag=${sougoupinyin_flag:-y}
-    if [[ ! ${sougoupinyin_flag} =~ ^[y,n]$ ]]; then
-        echo "${CWARNING}input error! Please only input 'y' or 'n'${CEND}"
-    else
-         [ "${sougoupinyin_flag}" == 'y' -a -e "/opt/sogoupinyin" ] && { echo "${CWARNING}sougoupinyin already installed! ${CEND}"; unset sougoupinyin_flag; }
-        break;
-    fi
-done
-
 # check sunlogin
 while :; do echo
     read -e -p "Do you want to install sunlogin? [y/n](y): " sunlogin_flag
@@ -433,6 +450,21 @@ if [ "${remove_flag}" == 'y' ]; then
     Remove_Liboffice 2>&1 | tee -a ${start_dir}/install.log
 fi
 
+case "${input_method_flag}" in
+  1)
+    . include/input-method/fcitx_googlepinyin.sh
+    Install_GooglePinyin 2>&1 | tee -a ${oneinstack_dir}/install.log
+    ;;
+  2)
+    . include/input-method/fcitx_sougoupinyin.sh
+    Install_Sougoupinyin 2>&1 | tee -a ${oneinstack_dir}/install.log
+    ;;
+  3)
+    . include/input-method/fcitx_baidupinyin.sh
+    Install_Baidupinyin 2>&1 | tee -a ${oneinstack_dir}/install.log
+    ;;
+esac
+
 if [ "${baidunetdisk_flag}" == 'y' ]; then
     . include/baidunetdisk.sh
     Install_Baidunetdisk 2>&1 | tee -a ${start_dir}/install.log
@@ -501,11 +533,6 @@ fi
 if [ "${qv2ray_flag}" == 'y' ]; then
     . include/qv2ray.sh
     Install_Qv2ray 2>&1 | tee -a ${start_dir}/install.log
-fi
-
-if [ "${sougoupinyin_flag}" == 'y' ]; then
-    . include/sougoupinyin.sh
-    Install_Sougoupinyin 2>&1 | tee -a ${start_dir}/install.log
 fi
 
 if [ "${sunlogin_flag}" == 'y' ]; then
