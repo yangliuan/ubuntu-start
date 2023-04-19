@@ -450,6 +450,11 @@ if [ "${remove_flag}" == 'y' ]; then
     Remove_Liboffice 2>&1 | tee -a ${start_dir}/install.log
 fi
 
+if [ "${input_method_flag}" == 'y'] && [ ! -f "/usr/bin/fcitx" ]; then
+    . include/input-method/fcitx.sh
+    Install_Fcitx
+fi
+
 case "${input_method_flag}" in
   1)
     . include/input-method/fcitx_googlepinyin.sh
