@@ -1,17 +1,17 @@
 #!/bin/bash
 Remove_Unwanted(){
     #接龙游戏
-    apt-get purge aisleriot 
+    apt purge aisleriot 
     #数独
-    apt-get purge gnome-sudoku 
+    apt purge gnome-sudoku 
     #扫雷
-    apt-get purge gnome-mines 
+    apt purge gnome-mines 
     #对对碰
-    apt-get purge gnome-mahjongg
+    apt purge gnome-mahjongg
     #音乐播放器
-    apt-get purge rhythmbox 
+    apt purge rhythmbox 
     #扫描
-    apt-get purge simple-scan
+    apt purge simple-scan
     #茄子 系统摄像头软件
-    apt-get purge cheese
+    apt purge cheese
 }

@@ -444,29 +444,31 @@ apt-get update && apt-get upgrade
 apt-get install curl wget git gcc make
 
 if [ "${remove_flag}" == 'y' ]; then
-    . include/remove_liboffice.sh
+    . include/liboffice.sh
     . include/remove_unwanted.sh
     Remove_Unwanted 2>&1 | tee -a ${start_dir}/install.log
-    Remove_Liboffice 2>&1 | tee -a ${start_dir}/install.log
+    Uninstall_Libreoffice 2>&1 | tee -a ${start_dir}/install.log
 fi
 
-if [ "${input_method_flag}" == 'y'] && [ ! -f "/usr/bin/fcitx" ]; then
+if [ "${input_method_flag}" == 'y' ] && [ ! -f "/usr/bin/fcitx" ]; then
     . include/input-method/fcitx.sh
     Install_Fcitx
 fi
 
-case "${input_method_flag}" in
+echo "${input_method_flag}"
+
+case "${input_method_option}" in
   1)
     . include/input-method/fcitx_googlepinyin.sh
-    Install_GooglePinyin 2>&1 | tee -a ${oneinstack_dir}/install.log
+    Install_GooglePinyin 2>&1 | tee -a ${start_dir}/install.log
     ;;
   2)
     . include/input-method/fcitx_sougoupinyin.sh
-    Install_Sougoupinyin 2>&1 | tee -a ${oneinstack_dir}/install.log
+    Install_Sougoupinyin 2>&1 | tee -a ${start_dir}/install.log
     ;;
   3)
     . include/input-method/fcitx_baidupinyin.sh
-    Install_Baidupinyin 2>&1 | tee -a ${oneinstack_dir}/install.log
+    Install_Baidupinyin 2>&1 | tee -a ${start_dir}/install.log
     ;;
 esac
 
