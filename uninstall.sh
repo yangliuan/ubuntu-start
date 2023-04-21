@@ -254,4 +254,4 @@ if [ "${gnome_pomodoro_flag}" == 'y' ]; then
     Uninstall_GnomePomodoro
 fi
 
-apt-get autoremove
+apt autoremove

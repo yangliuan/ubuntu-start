@@ -1,6 +1,8 @@
 #!/bin/bash
 Install_Fcitx() {
-    apt install fcitx
+    if [ ! -f "/usr/bin/fcitx" ]; then
+        apt install fcitx
+    fi
 }
 
 Uninstall_Fcitx() {

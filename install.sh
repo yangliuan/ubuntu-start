@@ -19,6 +19,7 @@ pushd ${start_dir} > /dev/null
 . ./include/check_os.sh
 . ./include/command_parameters.sh
 . include/patch_suport.sh
+. include/input-method/fcitx.sh
 
 ARG_NUM=$#
 TEMP=`getopt -o hvV --long help,version,all,input_method_option:,baidunetdisk,chrome,deepinwine,dingtalk,linuxqq,feishu,flameshot,indicator_sysmonitor,lantern,neteasy_cloudmusic,qqmusic,peek,qv2ray,sunlogin,theme_tools,vlc,wps,xDroid,conky,my_weather_indicator,gnome_pomodoro,gnome_center,reboot -- "$@" 2>/dev/null`
@@ -473,11 +474,6 @@ if [ "${remove_flag}" == 'y' ]; then
     . include/remove_unwanted.sh
     Remove_Unwanted 2>&1 | tee -a ${start_dir}/install.log
     Uninstall_Libreoffice 2>&1 | tee -a ${start_dir}/install.log
-fi
-
-if [ "${input_method_flag}" == 'y' ] && [ ! -f "/usr/bin/fcitx" ]; then
-    . include/input-method/fcitx.sh
-    Install_Fcitx
 fi
 
 case "${input_method_option}" in
