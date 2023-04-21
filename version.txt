@@ -1,7 +1,7 @@
 # newest software version
 baidunetdisk_ver=4.17.7
 
-dingtalk_ver=1.4.0.20422
+dingtalk_ver=1.4.0.20829
 
 linuxqq_link_token=2355235c
 linuxqq_ver=3.1.1-11223
