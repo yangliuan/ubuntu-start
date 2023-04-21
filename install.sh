@@ -487,6 +487,7 @@ fi
 if [ "${deepinwine_flag}" == 'y' ]; then
     . ./include/deepin_wine.sh
     Install_DeepinWine 2>&1 | tee -a ${start_dir}/install.log
+    Install_Deepin_Wechat 2>&1 | tee -a ${start_dir}/install.log
 fi
 
 if [ "${dingtalk_flag}" == 'y' ]; then

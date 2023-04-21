@@ -1,16 +1,15 @@
 #!/bin/bash
+#github https://github.com/zq1997/deepin-wine
 Install_DeepinWine() {
-    #github https://github.com/zq1997/deepin-wine
     wget -O- https://deepin-wine.i-m.dev/setup.sh | sh
     apt install -f
 }
 
 Uninstall_DeepinWine() {
-    apt purge --autoremove com.qq.weixin.deepin
     rm -rfv /etc/apt/preferences.d/deepin-wine.i-m.dev.pref
     rm -rfv /etc/apt/sources.list.d/deepin-wine.i-m.dev.list
     rm -rfv /etc/profile.d/deepin-wine.i-m.dev.sh
-    apt update   
+    apt update
 }
 
 Install_Deepin_Wechat() {
