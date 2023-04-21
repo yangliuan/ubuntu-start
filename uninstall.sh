@@ -19,7 +19,7 @@ pushd ${start_dir} > /dev/null
 . ./include/command_parameters.sh
 
 ARG_NUM=$#
-TEMP=`getopt -o hvV --long help,version,all,baidunetdisk,chrome,deepinwine,dingtalk,linuxqq,feishu,flameshot,indicator_sysmonitor,lantern,neteasy_cloudmusic,qqmusic,peek,qv2ray,sougoupinyin,sunlogin,theme_tools,vlc,wps,xDroid,conky,my_weather_indicator,gnome_pomodoro,reboot -- "$@" 2>/dev/null`
+TEMP=`getopt -o hvV --long help,version,all,input_method_option:,baidunetdisk,chrome,deepinwine,dingtalk,linuxqq,feishu,flameshot,indicator_sysmonitor,lantern,neteasy_cloudmusic,qqmusic,peek,qv2ray,sougoupinyin,sunlogin,theme_tools,vlc,wps,xDroid,conky,my_weather_indicator,gnome_pomodoro,reboot -- "$@" 2>/dev/null`
 [ $? != 0 ] && echo "${CWARNING}ERROR: unknown argument! ${CEND}" && Show_Help && exit 1
 eval set -- "${TEMP}"
 while :; do
@@ -55,6 +55,9 @@ while :; do
       my_weather_indicator_flag=y
       gnome_pomodoro_flag=y
       shift 1
+      ;;
+    --input_method_option)
+      input_method_option=$2; shift 2
       ;;
     --baidunetdisk)
       baidunetdisk_flag=y; shift 1
@@ -95,18 +98,6 @@ while :; do
     --qv2ray)
       qv2ray_flag=y; shift 1
       ;;
-    --input_method)
-      imput_method_flag=y; shift 1
-      ;;
-    --googlepinyin)
-      googlepinyin_flag=y; shift 1
-      ;;
-    --sougoupinyin)
-      sougoupinyin_flag=y; shift 1
-      ;;
-    --baidupinyin)
-      baidupinyin_flag=y; shift 1
-      ;;
     --sunlogin)
       sunlogin_flag=y; shift 1
       ;;
@@ -143,11 +134,20 @@ while :; do
   esac
 done
 
-if [ "${input_method_flag}" == 'y' ]; then
-    googlepinyin_flag=y;
-    sougoupinyin_flag=y;
-    baidupinyin_flag=y;
-fi
+case "${input_method_option}" in
+  1)
+    . include/input-method/fcitx_googlepinyin.sh
+    Uninstall_GooglePinyin
+    ;;
+  2)
+    . include/input-method/fcitx_sougoupinyin.sh
+    Uninstall_Sougoupinyin
+    ;;
+  3)
+    . include/input-method/fcitx_baidupinyin.sh
+    Uninstall_Baidupinyin
+    ;;
+esac
 
 if [ "${baidunetdisk_flag}" == 'y' ]; then
     . ./include/baidunetdisk.sh
@@ -212,21 +212,6 @@ fi
 if [ "${qv2ray_flag}" == 'y' ]; then
     . ./include/qv2ray.sh
     Uninstall_Qv2ray
-fi
-
-if [ "${googlepinyin_flag}" == 'y' ]; then
-    . ./include/input-method/fcitx_googlepinyin.sh
-    Uninstall_GooglePinyin
-fi
-
-if [ "${sougoupinyin_flag}" == 'y' ]; then
-    . ./include/input-method/fcitx_sougoupinyin.sh
-    Uninstall_Sougoupinyin
-fi
-
-if [ "${baidupinyin_flag}" == 'y' ]; then
-    . ./include/input-method/fcitx_baidupinyin.sh
-    Uninstall_Baidupinyin
 fi
 
 if [ "${sunlogin_flag}" == 'y' ]; then

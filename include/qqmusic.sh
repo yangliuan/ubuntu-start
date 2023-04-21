@@ -1,4 +1,5 @@
 #!/bin/bash
+#https://y.qq.com/download/download.html
 Install_QQmusic() {
     pushd ${start_dir}/src > /dev/null
 

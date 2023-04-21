@@ -21,7 +21,7 @@ pushd ${start_dir} > /dev/null
 . include/patch_suport.sh
 
 ARG_NUM=$#
-TEMP=`getopt -o hvV --long help,version,baidunetdisk,chrome,deepinwine,dingtalk,linuxqq,feishu,flameshot,indicator_sysmonitor,lantern,neteasy_cloudmusic,qqmusic,peek,qv2ray,sougoupinyin,sunlogin,theme_tools,vlc,wps,xDroid,conky,my_weather_indicator,gnome_pomodoro,gnome_center,reboot -- "$@" 2>/dev/null`
+TEMP=`getopt -o hvV --long help,version,input_method_option:,baidunetdisk,chrome,deepinwine,dingtalk,linuxqq,feishu,flameshot,indicator_sysmonitor,lantern,neteasy_cloudmusic,qqmusic,peek,qv2ray,sunlogin,theme_tools,vlc,wps,xDroid,conky,my_weather_indicator,gnome_pomodoro,gnome_center,reboot -- "$@" 2>/dev/null`
 [ $? != 0 ] && echo "${CWARNING}ERROR: unknown argument! ${CEND}" && Show_Help && exit 1
 eval set -- "${TEMP}"
 while :; do
@@ -32,6 +32,13 @@ while :; do
       ;;
     -v|-V|--version)
       version; exit 0
+      ;;
+    --input_method_option)
+      input_method_option=$2; shift 2
+      [[ ! ${input_method_option} =~ ^[1-3]$ ]] && { echo "${CWARNING}input_method_option input error! Please only input number 1~3${CEND}"; exit 1; }
+      [ "${input_method_option}" = '1' -a -e "/usr/lib/x86_64-linux-gnu/fcitx/fcitx-googlepinyin.so" ] && { echo "${CWARNING}googlepinyin already installed! ${CEND}"; unset input_method_option; }
+      [ "${input_method_option}" = '2' -a -e "/opt/sogoupinyin" ] && { echo "${CWARNING}sougoupinyin already installed! ${CEND}"; unset input_method_option; }
+      [ "${input_method_option}" = '3' -a -e "/opt/baidupinyin" ] && { echo "${CWARNING}baidupinyin already installed! ${CEND}"; unset input_method_option; }
       ;;
     --baidunetdisk)
       baidunetdisk_flag=y; shift 1
@@ -71,9 +78,6 @@ while :; do
       ;;
     --qv2ray)
       qv2ray_flag=y; shift 1
-      ;;
-    --sougoupinyin)
-      sougoupinyin_flag=y; shift 1
       ;;
     --sunlogin)
       sunlogin_flag=y; shift 1
@@ -454,8 +458,6 @@ if [ "${input_method_flag}" == 'y' ] && [ ! -f "/usr/bin/fcitx" ]; then
     . include/input-method/fcitx.sh
     Install_Fcitx
 fi
-
-echo "${input_method_flag}"
 
 case "${input_method_option}" in
   1)
