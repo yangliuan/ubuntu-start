@@ -1,4 +1,5 @@
 #!/bin/bash
+#https://linux.wps.cn/
 Install_Wps() {
     pushd ${start_dir}/src > /dev/null
     echo "Download wps ..."
