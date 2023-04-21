@@ -21,7 +21,7 @@ pushd ${start_dir} > /dev/null
 . include/patch_suport.sh
 
 ARG_NUM=$#
-TEMP=`getopt -o hvV --long help,version,input_method_option:,baidunetdisk,chrome,deepinwine,dingtalk,linuxqq,feishu,flameshot,indicator_sysmonitor,lantern,neteasy_cloudmusic,qqmusic,peek,qv2ray,sunlogin,theme_tools,vlc,wps,xDroid,conky,my_weather_indicator,gnome_pomodoro,gnome_center,reboot -- "$@" 2>/dev/null`
+TEMP=`getopt -o hvV --long help,version,all,input_method_option:,baidunetdisk,chrome,deepinwine,dingtalk,linuxqq,feishu,flameshot,indicator_sysmonitor,lantern,neteasy_cloudmusic,qqmusic,peek,qv2ray,sunlogin,theme_tools,vlc,wps,xDroid,conky,my_weather_indicator,gnome_pomodoro,gnome_center,reboot -- "$@" 2>/dev/null`
 [ $? != 0 ] && echo "${CWARNING}ERROR: unknown argument! ${CEND}" && Show_Help && exit 1
 eval set -- "${TEMP}"
 while :; do
@@ -32,6 +32,27 @@ while :; do
       ;;
     -v|-V|--version)
       version; exit 0
+      ;;
+    --all)
+      input_method_option=1
+      baidunetdisk_flag=y
+      chrome_flag=y
+      deepinwine_flag=y
+      dingtalk_flag=y
+      linuxqq_flag=y
+      feishu_flag=y
+      flameshot_flag=y
+      indicator_sysmonitor_flag=y
+      neteasy_cloudmusic_flag=y
+      qqmusic_flag=y
+      peek_flag=y
+      qv2ray_flag=y
+      sunlogin_flag=y
+      theme_tools_flag=y
+      vlc_flag=y
+      wps_flag=y
+      gnome_pomodoro_flag=y
+      shift 1;
       ;;
     --input_method_option)
       input_method_option=$2; shift 2
@@ -439,8 +460,8 @@ fi
 
 
 echo > ${start_dir}/install.log
-
 echo "ubuntu version ${Ubuntu_ver}"
+
 #替换软件源为aliyun
 . include/source_list.sh;Set_Sourcelist
 
@@ -585,16 +606,17 @@ if [ "${gnome_pomodoro_flag}" == 'y' ]; then
     Install_GnomePomodoro 2>&1 | tee -a ${start_dir}/install.log
 fi
 
-#install ubuntu 22.04 patch
-# if [ "${Ubuntu_ver}" == "22" ]; then
-#     #echo "${Ubuntu_ver}"
-#     Install_PatchSuport 2>&1 | tee -a ${start_dir}/install.log
-# fi
-
 #reinstall gnome center
 if [ "${gnome_center_flag}" == 'y' ]; then
     Reinstall_GnomeCenter 2>&1 | tee -a ${start_dir}/install.log
 fi
 
+#install ubuntu 22.04 patch
+if [ "${Ubuntu_ver}" == "22" ]; then
+    #echo "${Ubuntu_ver}"
+    Install_PatchSuport 2>&1 | tee -a ${start_dir}/install.log
+fi
+
+apt autoremove
 
 chown -R ${run_user}.root /opt

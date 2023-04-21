@@ -1,7 +1,6 @@
 #!/bin/bash
 Install_Qv2ray() {
     pushd ${start_dir}/src > /dev/null
-
     echo "Download qv2ray ..."
     #文档地址https://qv2ray.net/lang/zh/getting-started/
     src_url="http://mirror.yangliuan.cn/qv2ray.tar.xz" && Download_src
@@ -36,7 +35,6 @@ Install_Qv2ray() {
     chown -R ${run_user}.${run_group} /home/${run_user}/.config/qv2ray/plugins
     chmod -R 755 /home/${run_user}/.config/qv2ray/plugins
     chmod -R 755 /usr/share/applications/qv2ray.desktop
-    
     popd > /dev/null
 }
 

@@ -1,19 +1,28 @@
 #!/bin/bash
 Install_PatchSuport() {
-    #Install_Appimage
-    #Install_XdgDesktopPortalGnome
-    #Install_Ntfs3g
-    ResetTimeForWindow
+    if [ -f "${start_dir}/src/patch.lock" ]; then
+        echo 'ubuntu 2204 patched'
+    else
+        Install_Appimage
+        Install_XdgDesktopPortalGnome
+        Install_Ntfs3g
+        ResetTimeForWindow
+        Patch_Lock
+    fi
 }
 
+Patch_Lock() {
+    touch ${start_dir}/src/patch.lock
+    date +"%Y-%m-%d %H:%M:%S" > ${start_dir}/src/patch.lock
+}
 
 Install_Appimage() {
     #无法运行appimage问题
     #REF https://coolandroid.blog.csdn.net/article/details/124403162?spm=1001.2101.3001.6661.1&utm_medium=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1-124403162-blog-124639425.pc_relevant_multi_platform_featuressortv2dupreplace&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7ECTRLIST%7ERate-1-124403162-blog-124639425.pc_relevant_multi_platform_featuressortv2dupreplace&utm_relevant_index=1
-    apt install fuse libfuse2 2> /dev/null
-    modprobe fuse
-    groupadd fuse
-    usermod -a -G fuse ${run_user}
+    apt install fuse libfuse2
+    modprobe fuse >/dev/null 2>&1
+    groupadd fuse >/dev/null 2>&1
+    usermod -a -G fuse ${run_user} >/dev/null 2>&1
 }
 
 
