@@ -13,5 +13,5 @@ Install_Baidupinyin() {
 
 Uninstall_Baidupinyin() {
     apt remove fcitx-table qtcreator qt5* qml-module-qtquick-controls2
-    sudo dpkg -P fcitx-baidupinyin
+    dpkg -P fcitx-baidupinyin
 }
