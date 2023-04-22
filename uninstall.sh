@@ -161,6 +161,7 @@ fi
 
 if [ "${deepinwine_flag}" == 'y' ]; then
     . ./include/deepin_wine.sh
+    Uninstall_Deepin_Wechat
     Uninstall_DeepinWine
 fi
 

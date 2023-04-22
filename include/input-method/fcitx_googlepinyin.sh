@@ -6,5 +6,5 @@ Install_GooglePinyin() {
 }
 
 Uninstall_GooglePinyin() {
-    apt remove fcitx-googlepinyin fcitx-cloudpinyin
+    apt autoremove fcitx-googlepinyin fcitx-cloudpinyin
 } 
