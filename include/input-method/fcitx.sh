@@ -1,7 +1,7 @@
 #!/bin/bash
 Install_Fcitx() {
     if [ ! -f "/usr/bin/fcitx" ]; then
-        apt install fcitx
+        apt install fcitx 
     fi
 }
 
