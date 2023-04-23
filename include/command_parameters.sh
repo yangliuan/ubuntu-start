@@ -9,6 +9,8 @@ Show_Help() {
   echo "Usage: $0  command ...[parameters]....
   --help, -h                  Show this help message
   --version, -v               Show version info
+  --all                       all software
+  --input_method_option[1-3]  input method googlepin sogoupin baidupin       
   --baidunetdisk              baidu network disk
   --deepinwine                deepin software wechat qq...
   --dingtalk_flag             dingtalk
