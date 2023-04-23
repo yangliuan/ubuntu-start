@@ -36,19 +36,14 @@ while :; do
       ;;
     --all)
       input_method_option=1
-      baidunetdisk_flag=y
       chrome_flag=y
       deepinwine_flag=y
-      dingtalk_flag=y
-      linuxqq_flag=y
-      feishu_flag=y
       flameshot_flag=y
       indicator_sysmonitor_flag=y
       neteasy_cloudmusic_flag=y
       qqmusic_flag=y
       peek_flag=y
       qv2ray_flag=y
-      sunlogin_flag=y
       theme_tools_flag=y
       vlc_flag=y
       wps_flag=y
