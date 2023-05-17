@@ -5,7 +5,7 @@ Install_Feishu() {
     echo "Download feishu ..."
     src_url=" https://sf3-cn.feishucdn.com/obj/ee-appcenter/${feishu_link_token}/Feishu-linux_x64-${feishu_ver}.deb" && Download_src
     dpkg -i bytedance-feishu-${feishu_ver}_amd64.deb
-    apt-get install -f
+    apt-get -y install -f
     #rm -rfv bytedance-feishu-${feishu_ver}_amd64.deb
     popd > /dev/null
 }

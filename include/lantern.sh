@@ -5,7 +5,7 @@ Install_Lantern() {
     echo "Download lantern ..."
     src_url="http://mirror.yangliuan.cn/lantern-installer-64-bit.deb" && Download_src
     dpkg -i lantern-installer-64-bit.deb
-    apt-get install -f
+    apt-get -y install -f
     rm -rfv lantern-installer-64-bit.deb
     
     popd > /dev/null

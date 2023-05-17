@@ -6,12 +6,12 @@ Install_Baidupinyin() {
     echo "Download baidu pinyin..."
     src_url="http://mirror.yangliuan.cn/fcitx-baidupinyin.deb" && Download_src
     Install_Fcitx
-    apt install fcitx-table qtcreator qt5* qml-module-qtquick-controls2
+    apt-get -y install fcitx-table qtcreator qt5* qml-module-qtquick-controls2
     dpkg -i fcitx-baidupinyin.deb
     popd > /dev/null
 }
 
 Uninstall_Baidupinyin() {
-    apt remove fcitx-table qtcreator qt5* qml-module-qtquick-controls2
+    #apt-get remove fcitx-table qtcreator qt5* qml-module-qtquick-controls2
     dpkg -P fcitx-baidupinyin
 }

@@ -1,20 +1,20 @@
 #!/bin/bash
 Install_ThemeTools() {
     if [ "${Ubuntu_ver}" == "22" ]; then
-        apt-get install gnome-tweaks
+        apt-get -y install gnome-tweaks
     else
-        apt-get install gnome-tweak-tool
+        apt-get -y install gnome-tweak-tool
     fi
     
-    apt-get install chrome-gnome-shell
-    apt-get install gnome-shell-extensions
+    apt-get -y install chrome-gnome-shell
+    apt-get -y install gnome-shell-extensions
 }
 
 Uninstall_ThemeTools() {
     if [ "${Ubuntu_ver}" == "22" ]; then
-        apt-get autoremove gnome-tweaks
+        apt-get -y autoremove gnome-tweaks
     else
-        apt-get autoremove gnome-tweak-tool
+        apt-get -y autoremove gnome-tweak-tool
     fi
     
     apt-get autoremove chrome-gnome-shell

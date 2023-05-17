@@ -1,9 +1,9 @@
 #!/bin/bash
 #https://gnomepomodoro.org/
 Install_GnomePomodoro() {
-    apt-get install gnome-shell-pomodoro
+    apt-get -y install gnome-shell-pomodoro
 }
 
 Uninstall_GnomePomodoro() {
-    apt-get autoremove gnome-shell-pomodoro
+    apt-get -y autoremove gnome-shell-pomodoro
 }

@@ -7,14 +7,14 @@ Install_Sougoupinyin() {
     src_url="http://mirror.yangliuan.cn/sogoupinyin_${sougoupinyin_ver}_amd64.deb" && Download_src
     Install_Fcitx
     dpkg -i sogoupinyin_${sougoupinyin_ver}_amd64.deb
-    apt install libqt5qml5 libqt5quick5 libqt5quickwidgets5 qml-module-qtquick2 libgsettings-qt1
-    apt install -f
+    apt-get -y install libqt5qml5 libqt5quick5 libqt5quickwidgets5 qml-module-qtquick2 libgsettings-qt1
+    apt-get -y install -f
     #rm -rfv sogoupinyin_${sougoupinyin_ver}_amd64.deb
     popd > /dev/null
 }
 
 Uninstall_Sougoupinyin() {
     dpkg -P sogoupinyin
-    apt remove libqt5qml5 libqt5quick5 libqt5quickwidgets5 qml-module-qtquick2 libgsettings-qt1
-    rm -rf /opt/sogoupinyin
+    #apt-get remove libqt5qml5 libqt5quick5 libqt5quickwidgets5 qml-module-qtquick2 libgsettings-qt1
+    rm -rfv /opt/sogoupinyin
 }

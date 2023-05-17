@@ -6,7 +6,7 @@ Install_Flameshot() {
     echo "Download flameshot ..."
     src_url="http://mirror.yangliuan.cn/flameshot-${flameshot_ver}-1.debian-10.amd64.deb" && Download_src
     dpkg -i flameshot-${flameshot_ver}-1.debian-10.amd64.deb
-    apt-get install -f
+    apt-get -y install -f
     rm -rfv flameshot-${flameshot_ver}-1.debian-10.amd64.deb
     
     popd > /dev/null
