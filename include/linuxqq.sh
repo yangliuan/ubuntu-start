@@ -13,4 +13,5 @@ Install_LinuxQQ() {
 
 Uninstall_LinuxQQ() {
     dpkg -P linuxqq
+    [ -d "/opt/QQ" ] && rm -rf /opt/QQ
 }
