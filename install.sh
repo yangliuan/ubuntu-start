@@ -608,6 +608,8 @@ if [ "${Ubuntu_ver}" == "22" ]; then
     Install_PatchSuport 2>&1 | tee -a ${start_dir}/install.log
 fi
 
-apt autoremove
+[ ! -e "/usr/bin/nvidia-settings" ] && apt-get -y install nvidia-driver-530 nvidia-utils-530 nvidia-settings
+
+apt-get autoremove
 
 chown -R ${run_user}.root /opt

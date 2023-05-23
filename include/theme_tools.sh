@@ -8,7 +8,6 @@ Install_ThemeTools() {
     
     apt-get -y install chrome-gnome-shell
     apt-get -y install gnome-shell-extensions
-    apt-get -y install nvidia-settings
 }
 
 Uninstall_ThemeTools() {
@@ -20,5 +19,4 @@ Uninstall_ThemeTools() {
     
     apt-get -y autoremove chrome-gnome-shell
     apt-get -y autoremove gnome-shell-extensions
-    apt-get -y autoremove nvidia-settings
 }
