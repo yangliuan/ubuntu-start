@@ -22,7 +22,7 @@ pushd ${start_dir} > /dev/null
 . include/input-method/fcitx.sh
 
 ARG_NUM=$#
-TEMP=`getopt -o hvV --long help,version,all,input_method_option:,baidunetdisk,chrome,deepinwine,dingtalk,linuxqq,feishu,flameshot,indicator_sysmonitor,lantern,neteasy_cloudmusic,qqmusic,peek,qv2ray,sunlogin,theme_tools,vlc,wps,xDroid,conky,my_weather_indicator,gnome_pomodoro,gnome_center,reboot -- "$@" 2>/dev/null`
+TEMP=`getopt -o hvV --long help,version,all,input_method_option:,baidunetdisk,chrome,deepinwine,dingtalk,linuxqq,feishu,flameshot,indicator_sysmonitor,lantern,neteasy_cloudmusic,qqmusic,peek,qv2ray,sunlogin,theme_tools,vlc,bilibili_video_downloader,wps,xDroid,conky,my_weather_indicator,gnome_pomodoro,gnome_center,reboot -- "$@" 2>/dev/null`
 [ $? != 0 ] && echo "${CWARNING}ERROR: unknown argument! ${CEND}" && Show_Help && exit 1
 eval set -- "${TEMP}"
 while :; do
@@ -48,6 +48,9 @@ while :; do
       vlc_flag=y
       wps_flag=y
       gnome_pomodoro_flag=y
+      dingtalk_flag=y
+      feishu_flag=y
+      linuxqq_flag=y
       shift 1;
       ;;
     --input_method_option)
@@ -104,6 +107,9 @@ while :; do
       ;;
     --vlc)
       vlc_flag=y; shift 1
+      ;;
+    --bilibili_video_downloader)
+      bilibili_video_downloader_flag=y; shift 1
       ;;
     --wps)
       wps_flag=y; shift 1
@@ -380,6 +386,7 @@ while :; do echo
     fi
 done
 
+
 # check wps
 while :; do echo
     read -e -p "Do you want to install wps? [y/n](y): " wps_flag
@@ -572,6 +579,11 @@ if [ "${vlc_flag}" == 'y' ]; then
     Install_Vlc 2>&1 | tee -a ${start_dir}/install.log
 fi
 
+if [ "${bilibili_video_downloader_flag}" == 'y' ]; then
+    . include/video_download.sh
+    Install_BilbiliDownloader 2>&1 | tee -a ${start_dir}/install.log
+fi
+
 if [ "${wps_flag}" == 'y' ]; then
     . include/wps.sh
     Install_Wps 2>&1 | tee -a ${start_dir}/install.log
@@ -608,7 +620,7 @@ if [ "${Ubuntu_ver}" == "22" ]; then
     Install_PatchSuport 2>&1 | tee -a ${start_dir}/install.log
 fi
 
-[ ! -e "/usr/bin/nvidia-settings" ] && apt-get -y install nvidia-driver-530 nvidia-utils-530 nvidia-settings
+
 
 apt-get autoremove
 

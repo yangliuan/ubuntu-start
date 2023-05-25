@@ -19,7 +19,7 @@ pushd ${start_dir} > /dev/null
 . ./include/command_parameters.sh
 
 ARG_NUM=$#
-TEMP=`getopt -o hvV --long help,version,all,input_method_option:,baidunetdisk,chrome,deepinwine,dingtalk,linuxqq,feishu,flameshot,indicator_sysmonitor,lantern,neteasy_cloudmusic,qqmusic,peek,qv2ray,sougoupinyin,sunlogin,theme_tools,vlc,wps,xDroid,conky,my_weather_indicator,gnome_pomodoro,reboot -- "$@" 2>/dev/null`
+TEMP=`getopt -o hvV --long help,version,all,input_method_option:,baidunetdisk,chrome,deepinwine,dingtalk,linuxqq,feishu,flameshot,indicator_sysmonitor,lantern,neteasy_cloudmusic,qqmusic,peek,qv2ray,sougoupinyin,sunlogin,theme_tools,vlc,bilibili_video_downloader,wps,xDroid,conky,my_weather_indicator,gnome_pomodoro,reboot -- "$@" 2>/dev/null`
 [ $? != 0 ] && echo "${CWARNING}ERROR: unknown argument! ${CEND}" && Show_Help && exit 1
 eval set -- "${TEMP}"
 while :; do
@@ -106,6 +106,9 @@ while :; do
       ;;
     --vlc)
       vlc_flag=y; shift 1
+      ;;
+    --bilibili_video_downloader)
+      bilibili_video_downloader_flag=y; shift 1
       ;;
     --wps)
       wps_flag=y; shift 1
@@ -228,6 +231,11 @@ fi
 if [ "${vlc_flag}" == 'y' ]; then
     . ./include/vlc.sh
     Uninstall_Vlc
+fi
+
+if [ "${bilibili_video_downloader_flag}" == 'y' ]; then
+    . ./include/video_download.sh
+    Uninstall_BilbiliDownloader
 fi
 
 if [ "${wps_flag}" == 'y' ]; then

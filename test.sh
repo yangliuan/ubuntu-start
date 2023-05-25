@@ -14,16 +14,18 @@ pushd ${start_dir} > /dev/null
 . ./include/color.sh
 . ./version.txt
 . ./options.conf
-. ./include/download.sh
-. ./include/check_os.sh
-. ./include/command_parameters.sh
-. ./include/patch_suport.sh
-
+. include/download.sh
+. include/check_os.sh
+. include/command_parameters.sh
+. include/patch_suport.sh
+. include/video_download.sh
+. include/qqmusic.sh
+. include/neteasy_cloud_music.sh
 #Install_PatchSuport | tee -a ${start_dir}/test.log
-
-# . include/neteasy_cloud_music.sh
+#Install_NvidiaDriver | tee -a ${start_dir}/test.log
 # Patch_NeteasyCloudMusicFor2204 2>&1 | tee -a ${start_dir}/test.log
 
-# . include/qqmusic.sh
+# 
 # Patch_QQmusicFor2204 2>&1 | tee -a ${start_dir}/test.log
-
+#Uninstall_BilbiliDownloader
+#Install_BilbiliDownloader | tee -a ${start_dir}/test.log 

@@ -21,3 +21,8 @@ feishu_link_token=399c2025
 feishu_ver=5.30.15
 
 xDroid_ver=9.0.15
+
+nvidia_driver_ver=530
+
+#video_download_tool
+bilibili_video_downloader_ver=3.3.3

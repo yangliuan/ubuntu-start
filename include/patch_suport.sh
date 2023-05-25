@@ -7,6 +7,7 @@ Install_PatchSuport() {
         Install_XdgDesktopPortalGnome
         Install_Ntfs3g
         ResetTimeForWindow
+        Install_NvidiaDriver
         Patch_Lock
     fi
 }
@@ -46,8 +47,13 @@ Reinstall_GnomeCenter (){
 ResetTimeForWindow() {
     #双系统保持时间一致
     #REF https://www.cnblogs.com/xiaotong-sun/p/16138941.html
-   apt-get -y install ntpdate
-   ntpdate time.windows.com
-   hwclock --localtime --systohc
+    apt-get -y install ntpdate
+    ntpdate time.windows.com
+    hwclock --localtime --systohc
 }
 
+Install_NvidiaDriver() {
+    if lspci | grep -i NVIDIA > /dev/null; then
+        [ ! -e "/usr/bin/nvidia-settings" ] && apt-get -y install nvidia-driver-${nvidia_driver_ver} nvidia-utils-${nvidia_driver_ver} nvidia-settings
+    fi
+}
