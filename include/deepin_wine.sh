@@ -1,5 +1,6 @@
 #!/bin/bash
 #github https://github.com/zq1997/deepin-wine
+#software source https://deepin-wine.i-m.dev/
 Install_DeepinWine() {
     wget -O- https://deepin-wine.i-m.dev/setup.sh | sh
     apt-get -y install -f

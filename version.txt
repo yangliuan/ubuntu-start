@@ -17,8 +17,8 @@ qqmusic_ver=1.1.5
 
 sunlogin_ver=11.0.1.44968
 
-feishu_link_token=399c2025
-feishu_ver=5.30.15
+feishu_link_token=d358d0df
+feishu_ver=6.1.12
 
 xDroid_ver=9.0.15
 
