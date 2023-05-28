@@ -7,7 +7,7 @@ Install_QQmusic() {
     src_url="https://dldir1.qq.com/music/clntupate/linux/deb/qqmusic_${qqmusic_ver}_amd64.deb" && Download_src
     dpkg -i qqmusic_${qqmusic_ver}_amd64.deb
     apt-get -y install -f
-    rm -rfv qqmusic_${qqmusic_ver}_amd64.deb
+    #rm -rfv qqmusic_${qqmusic_ver}_amd64.deb
     
     popd > /dev/null
 

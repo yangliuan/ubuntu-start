@@ -7,7 +7,7 @@ Install_Sunlogin() {
     src_url="https://down.oray.com/sunlogin/linux/SunloginClient_${sunlogin_ver}_amd64.deb" && Download_src
     dpkg -i SunloginClient_${sunlogin_ver}-amd64.deb
     apt-get -y install -f
-    rm -rfv SunloginClient_${sunlogin_ver}-amd64.deb
+    #rm -rfv SunloginClient_${sunlogin_ver}-amd64.deb
     popd > /dev/null
 }
 

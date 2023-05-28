@@ -6,7 +6,7 @@ Install_Lantern() {
     src_url="http://mirror.yangliuan.cn/lantern-installer-64-bit.deb" && Download_src
     dpkg -i lantern-installer-64-bit.deb
     apt-get -y install -f
-    rm -rfv lantern-installer-64-bit.deb
+    #rm -rfv lantern-installer-64-bit.deb
     
     popd > /dev/null
 }
