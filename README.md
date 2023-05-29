@@ -1,6 +1,7 @@
 # ubuntu-start
-ubuntu20.04+ desktop 常用软件安装脚本，减少每次重装系统的工作量
+ubuntu20.04+ desktop 常用软件安装脚本，减少每次重装系统的工作量 
 
+已合并到[ubuntu-development-start](https://github.com/yangliuan/ubuntu-development-start) 不在维护
 ### 脚本目录结构
 
 ```
